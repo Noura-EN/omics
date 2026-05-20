@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>From Copilots to Co-scientists in Omics — NeurIPS 2026 Workshop</title>
+  <meta name="description" content="A NeurIPS 2026 workshop on evaluating and governing tool-using AI agents in omics. Sydney, December 2026." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --paper: #f4efe6;
+      --paper-warm: #ede6d7;
+      --ink: #14110d;
+      --ink-soft: #3a342c;
+      --muted: #877e6f;
+      --line: #d6cdba;
+      --line-soft: #e3dbc9;
+      --accent: #b8431f;
+      --accent-soft: #d96a44;
+      --moss: #4a5d3a;
+
+      --serif: 'Fraunces', 'Georgia', serif;
+      --sans: 'Geist', system-ui, -apple-system, sans-serif;
+      --mono: 'Geist Mono', 'SF Mono', monospace;
+
+      --max: 1240px;
+      --gutter: clamp(1.25rem, 4vw, 3rem);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 17px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      font-feature-settings: "ss01", "cv11";
+      background-image:
+        radial-gradient(circle at 20% 30%, rgba(20,17,13,0.018) 0, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(184,67,31,0.025) 0, transparent 50%);
+    }
+
+    /* ===== Type ===== */
+    h1, h2, h3, h4 {
+      font-family: var(--serif);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+      margin: 0;
+      font-variation-settings: "opsz" 96, "SOFT" 30;
+    }
+    .display {
+      font-size: clamp(2.6rem, 7vw, 6rem);
+      letter-spacing: -0.035em;
+      line-height: 0.98;
+    }
+    .display em {
+      font-style: italic;
+      font-variation-settings: "opsz" 144, "SOFT" 80;
+      color: var(--accent);
+    }
+    h2 { font-size: clamp(1.8rem, 3.6vw, 2.8rem); }
+    h3 { font-size: clamp(1.3rem, 2vw, 1.6rem); font-weight: 500; }
+    p { margin: 0 0 1em; }
+    a { color: var(--accent); text-decoration: none; border-bottom: 1px solid currentColor; transition: opacity 0.2s; }
+    a:hover { opacity: 0.65; }
+
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    .lead {
+      font-family: var(--serif);
+      font-size: clamp(1.15rem, 1.6vw, 1.4rem);
+      line-height: 1.45;
+      font-weight: 400;
+      color: var(--ink-soft);
+      font-variation-settings: "opsz" 36;
+    }
+
+    /* ===== Layout ===== */
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding-left: var(--gutter);
+      padding-right: var(--gutter);
+    }
+    section {
+      padding: clamp(4rem, 9vw, 8rem) 0;
+      border-top: 1px solid var(--line);
+      position: relative;
+    }
+    .section-head {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+      margin-bottom: clamp(2rem, 4vw, 3rem);
+    }
+    @media (min-width: 780px) {
+      .section-head { grid-template-columns: 200px 1fr; gap: 3rem; }
+    }
+    .section-head .meta { display: flex; flex-direction: column; gap: 0.4rem; }
+    .section-num {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--accent);
+      letter-spacing: 0.16em;
+    }
+
+    /* ===== Nav ===== */
+    nav.top {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(244, 239, 230, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line-soft);
+    }
+    nav.top .inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0.9rem var(--gutter);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+    nav.top .brand { font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.05em; color: var(--ink); border: none; }
+    nav.top .brand strong { color: var(--accent); font-weight: 500; }
+    nav.top ul { list-style: none; padding: 0; margin: 0; display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    nav.top li a { font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.04em; color: var(--ink-soft); border: none; }
+    nav.top li a:hover { color: var(--accent); opacity: 1; }
+    @media (max-width: 720px) { nav.top ul { display: none; } }
+
+    /* ===== Hero ===== */
+    .hero {
+      padding: clamp(3rem, 7vw, 6rem) 0 clamp(3rem, 6vw, 5rem);
+      position: relative;
+      overflow: hidden;
+      border-top: none !important;
+    }
+    .hero .container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    @media (min-width: 960px) {
+      .hero .container { grid-template-columns: 1.3fr 1fr; gap: 4rem; }
+    }
+    .hero .tagline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.4rem 0.9rem;
+      border: 1px solid var(--line);
+      border-radius: 100px;
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 2rem;
+    }
+    .hero .tagline .dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2.4s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.15); }
+    }
+    .hero h1 .line { display: block; }
+    .hero .subline {
+      margin-top: 1.5rem;
+      max-width: 60ch;
+      font-family: var(--serif);
+      font-size: clamp(1.15rem, 1.5vw, 1.35rem);
+      font-style: italic;
+      color: var(--ink-soft);
+      font-variation-settings: "opsz" 36;
+    }
+    .hero-art {
+      position: relative;
+      width: 100%;
+      max-width: 480px;
+      margin: 0 auto;
+      aspect-ratio: 1 / 1;
+    }
+    .hero-art svg { width: 100%; height: 100%; display: block; }
+    .hero-art .label {
+      position: absolute;
+      bottom: -1.5rem;
+      right: 0;
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+    .meta-strip {
+      margin-top: 3.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 1.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--line);
+      grid-column: 1 / -1;
+    }
+    .meta-item .label {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+    .meta-item .value {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      color: var(--ink);
+    }
+    .meta-item .value small {
+      color: var(--muted);
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      display: block;
+      margin-top: 0.2rem;
+    }
+
+    /* ===== Schedule ===== */
+    .schedule { display: grid; grid-template-columns: 1fr; }
+    .slot {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.4rem;
+      padding: 1.5rem 0;
+      border-top: 1px solid var(--line-soft);
+    }
+    @media (min-width: 760px) {
+      .slot {
+        grid-template-columns: 140px 1fr;
+        gap: 2.5rem;
+        padding: 1.75rem 0;
+      }
+    }
+    .slot:first-child { border-top: 1px solid var(--line); }
+    .slot:last-child { border-bottom: 1px solid var(--line); }
+    .slot .time {
+      font-family: var(--mono);
+      font-size: 0.84rem;
+      color: var(--ink-soft);
+      letter-spacing: 0.02em;
+      padding-top: 0.25rem;
+    }
+    .slot .what h4 {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-bottom: 0.4rem;
+      letter-spacing: -0.01em;
+      font-variation-settings: "opsz" 36;
+    }
+    .slot .what .desc { font-size: 0.92rem; color: var(--ink-soft); max-width: 60ch; }
+    .slot.break .what h4 { color: var(--muted); font-style: italic; }
+    .slot.keynote { background: linear-gradient(to right, rgba(184,67,31,0.04), transparent); }
+    .slot.keynote .what h4 { color: var(--accent); }
+    .sub-list { list-style: none; padding: 0; margin: 1rem 0 0; }
+    .sub-list li {
+      padding: 0.6rem 0 0.6rem 1.5rem;
+      border-left: 1px solid var(--line);
+      margin-left: 0.2rem;
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+    }
+    .sub-list li strong {
+      display: block;
+      font-family: var(--sans);
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 0.15rem;
+    }
+    .sub-list li .lead-by {
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    /* ===== Overview ===== */
+    .overview-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+    @media (min-width: 900px) {
+      .overview-grid { grid-template-columns: 1.4fr 1fr; gap: 4rem; }
+    }
+    .overview-grid .body p { margin-bottom: 1.2em; max-width: 62ch; }
+    .overview-grid .body p:first-child { font-size: 1.15rem; }
+    .pull-quote {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.3rem;
+      line-height: 1.4;
+      padding: 1.5rem 0 1.5rem 1.5rem;
+      border-left: 2px solid var(--accent);
+      color: var(--ink);
+      font-variation-settings: "opsz" 48;
+      align-self: start;
+      position: sticky;
+      top: 6rem;
+    }
+    .pull-quote cite {
+      display: block;
+      font-style: normal;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 1rem;
+    }
+
+    /* ===== Three Pillars ===== */
+    .pillars {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      counter-reset: pillar;
+    }
+    @media (min-width: 800px) { .pillars { grid-template-columns: repeat(3, 1fr); } }
+    .pillar {
+      padding: 2rem 1.75rem;
+      border: 1px solid var(--line);
+      background: var(--paper-warm);
+      position: relative;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .pillar:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .pillar::before {
+      counter-increment: pillar;
+      content: "0" counter(pillar);
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      display: block;
+      margin-bottom: 1.5rem;
+    }
+    .pillar h3 { font-size: 1.3rem; margin-bottom: 1rem; line-height: 1.15; }
+    .pillar ul { list-style: none; padding: 0; margin: 0; font-size: 0.92rem; color: var(--ink-soft); }
+    .pillar li {
+      padding: 0.6rem 0;
+      border-top: 1px solid var(--line-soft);
+      line-height: 1.4;
+    }
+    .pillar li:first-child { border-top: none; padding-top: 0; }
+
+    /* ===== Dates (FIXED: more breathing room) ===== */
+    .dates-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    @media (min-width: 700px) {
+      .dates-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    .date-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding: 3rem 0;
+      border-bottom: 1px solid var(--line-soft);
+      position: relative;
+    }
+    .date-row:last-child { border-bottom: none; }
+    @media (min-width: 700px) {
+      .date-row {
+        padding: 3.5rem 3.5rem 3.5rem 0;
+        border-bottom: none;
+        border-right: 1px solid var(--line);
+        min-height: 220px;
+        justify-content: center;
+      }
+      .date-row:last-child { border-right: none; padding-right: 0; }
+      .date-row:not(:first-child) { padding-left: 3.5rem; }
+    }
+    .date-row .marker {
+      width: 24px;
+      height: 1px;
+      background: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    .date-row small {
+      display: block;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+    .date-row .when {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      color: var(--ink);
+      margin-bottom: 1rem;
+    }
+    .date-row .label {
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+      max-width: 28ch;
+    }
+
+    /* ===== Speakers ===== */
+    .people-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+    .person {
+      background: var(--paper);
+      padding: 1.75rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .person .avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--paper-warm);
+      border: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+      font-variation-settings: "opsz" 36;
+      position: relative;
+      overflow: hidden;
+    }
+    .person .avatar img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    .person h4 {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+    .person .affil {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+    .person .role {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    /* ===== Organizers ===== */
+    .org-list { display: grid; grid-template-columns: 1fr; gap: 0; }
+    .org {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      padding: 2rem 0;
+      border-top: 1px solid var(--line);
+      align-items: start;
+    }
+    @media (min-width: 760px) {
+      .org {
+        grid-template-columns: 96px 240px 1fr;
+        gap: 2.5rem;
+        padding: 2.5rem 0;
+        align-items: start;
+      }
+    }
+    .org:last-child { border-bottom: 1px solid var(--line); }
+    .org .portrait {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      background: var(--paper-warm);
+      border: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      color: var(--accent);
+      overflow: hidden;
+      position: relative;
+      flex-shrink: 0;
+    }
+    .org .portrait img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .org .name-block h4 {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 500;
+      letter-spacing: -0.015em;
+      margin-bottom: 0.5rem;
+    }
+    .org .affil {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.04em;
+      color: var(--ink-soft);
+      line-height: 1.5;
+    }
+    .org .bio { font-size: 0.95rem; color: var(--ink-soft); max-width: 65ch; }
+
+    /* ===== CFP ===== */
+    .cfp-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+    @media (min-width: 900px) { .cfp-grid { grid-template-columns: 1fr 1fr; gap: 4rem; } }
+    .cfp-card { padding: 2rem; background: var(--paper-warm); border: 1px solid var(--line); }
+    .cfp-card h3 { margin-bottom: 1rem; font-size: 1.4rem; }
+    .cfp-card ul { list-style: none; padding: 0; margin: 0; }
+    .cfp-card li {
+      padding: 0.7rem 0;
+      border-top: 1px solid var(--line);
+      font-size: 0.93rem;
+      color: var(--ink-soft);
+    }
+    .cfp-card li:first-child { border-top: none; }
+    .cfp-card li strong { color: var(--ink); display: block; font-weight: 500; margin-bottom: 0.15rem; }
+
+    /* ===== Signup / Footer ===== */
+    .signup {
+      padding: clamp(4rem, 7vw, 6rem) 0;
+      background: var(--ink);
+      color: var(--paper);
+      border-top: none;
+    }
+    .signup .container { display: grid; gap: 2rem; align-items: end; }
+    @media (min-width: 800px) {
+      .signup .container { grid-template-columns: 1.3fr 1fr; gap: 4rem; }
+    }
+    .signup h2 { color: var(--paper); }
+    .signup h2 em { color: var(--accent-soft); font-style: italic; }
+    .signup .lead { color: rgba(244,239,230,0.7); }
+    .signup-form { display: flex; flex-direction: column; gap: 0.75rem; }
+    .signup-form input {
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(244,239,230,0.3);
+      padding: 0.9rem 0.2rem;
+      color: var(--paper);
+      font-family: var(--sans);
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .signup-form input::placeholder { color: rgba(244,239,230,0.4); }
+    .signup-form input:focus { border-color: var(--accent-soft); }
+    .signup-form button {
+      align-self: flex-start;
+      margin-top: 0.5rem;
+      background: var(--accent);
+      color: var(--paper);
+      border: none;
+      padding: 0.9rem 1.6rem;
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .signup-form button:hover { background: var(--accent-soft); }
+
+    footer {
+      padding: 2rem 0;
+      background: var(--ink);
+      color: rgba(244,239,230,0.6);
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.04em;
+      border-top: 1px solid rgba(244,239,230,0.1);
+    }
+    footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    footer a { color: var(--accent-soft); border: none; }
+
+    /* ===== Reveal ===== */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .hero .tagline .dot { animation: none; }
+    }
+
+    ::selection { background: var(--accent); color: var(--paper); }
+  </style>
+</head>
+<body>
+
+  <!-- =============== NAV =============== -->
+  <nav class="top">
+    <div class="inner">
+      <a href="#top" class="brand">
+        <strong>Copilots → Co-scientists</strong> · NeurIPS 2026
+      </a>
+      <ul>
+        <li><a href="#schedule">Schedule</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#dates">Dates</a></li>
+        <li><a href="#speakers">Speakers</a></li>
+        <li><a href="#organizers">Organizers</a></li>
+        <li><a href="#submit">Submit</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- =============== HERO =============== -->
+  <header class="hero" id="top">
+    <div class="container">
+      <div>
+        <div class="tagline reveal">
+          <span class="dot"></span>
+          <span>NeurIPS 2026 · Workshop</span>
+        </div>
+        <h1 class="display reveal">
+          <span class="line">From Copilots</span>
+          <span class="line">to <em>Co-scientists</em></span>
+          <span class="line">in Omics</span>
+        </h1>
+        <p class="subline reveal">
+          Evaluating and governing tool-using AI agents
+          for transcriptomics, single-cell, and multi-omics workflows.
+        </p>
+      </div>
+
+      <!-- Hero illustration: stylised cell + agent-paths -->
+      <div class="hero-art reveal" aria-hidden="true">
+        <svg viewBox="0 0 480 480" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="cellFade" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#14110d" stop-opacity="0.18"/>
+              <stop offset="70%" stop-color="#14110d" stop-opacity="0.10"/>
+              <stop offset="100%" stop-color="#14110d" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="dotMask" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#fff" stop-opacity="1"/>
+              <stop offset="60%" stop-color="#fff" stop-opacity="1"/>
+              <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+            </radialGradient>
+            <mask id="fadeMask">
+              <rect width="480" height="480" fill="url(#dotMask)"/>
+            </mask>
+          </defs>
+
+          <!-- Cell membranes -->
+          <circle cx="240" cy="240" r="220" fill="none" stroke="#14110d" stroke-width="0.6" opacity="0.18"/>
+          <circle cx="240" cy="240" r="160" fill="none" stroke="#14110d" stroke-width="0.4" opacity="0.13"/>
+          <circle cx="240" cy="240" r="220" fill="url(#cellFade)" opacity="0.5"/>
+
+          <!-- Halftone dot grid (masked to fade at edges) -->
+          <g mask="url(#fadeMask)" fill="#14110d" opacity="0.45">
+            <!-- 12x12 grid of dots, spacing 36 -->
+            <g>
+              <circle cx="60" cy="60" r="1.6"/><circle cx="96" cy="60" r="1.6"/><circle cx="132" cy="60" r="1.6"/><circle cx="168" cy="60" r="1.6"/><circle cx="204" cy="60" r="1.6"/><circle cx="240" cy="60" r="1.6"/><circle cx="276" cy="60" r="1.6"/><circle cx="312" cy="60" r="1.6"/><circle cx="348" cy="60" r="1.6"/><circle cx="384" cy="60" r="1.6"/><circle cx="420" cy="60" r="1.6"/>
+              <circle cx="60" cy="96" r="1.6"/><circle cx="96" cy="96" r="1.6"/><circle cx="132" cy="96" r="1.6"/><circle cx="168" cy="96" r="1.6"/><circle cx="204" cy="96" r="1.6"/><circle cx="240" cy="96" r="1.6"/><circle cx="276" cy="96" r="1.6"/><circle cx="312" cy="96" r="1.6"/><circle cx="348" cy="96" r="1.6"/><circle cx="384" cy="96" r="1.6"/><circle cx="420" cy="96" r="1.6"/>
+              <circle cx="60" cy="132" r="1.6"/><circle cx="96" cy="132" r="1.6"/><circle cx="132" cy="132" r="1.6"/><circle cx="168" cy="132" r="1.6"/><circle cx="204" cy="132" r="1.6"/><circle cx="240" cy="132" r="1.6"/><circle cx="276" cy="132" r="1.6"/><circle cx="312" cy="132" r="1.6"/><circle cx="348" cy="132" r="1.6"/><circle cx="384" cy="132" r="1.6"/><circle cx="420" cy="132" r="1.6"/>
+              <circle cx="60" cy="168" r="1.6"/><circle cx="96" cy="168" r="1.6"/><circle cx="132" cy="168" r="1.6"/><circle cx="168" cy="168" r="1.6"/><circle cx="204" cy="168" r="1.6"/><circle cx="240" cy="168" r="1.6"/><circle cx="276" cy="168" r="1.6"/><circle cx="312" cy="168" r="1.6"/><circle cx="348" cy="168" r="1.6"/><circle cx="384" cy="168" r="1.6"/><circle cx="420" cy="168" r="1.6"/>
+              <circle cx="60" cy="204" r="1.6"/><circle cx="96" cy="204" r="1.6"/><circle cx="132" cy="204" r="1.6"/><circle cx="168" cy="204" r="1.6"/><circle cx="204" cy="204" r="1.6"/><circle cx="240" cy="204" r="1.6"/><circle cx="276" cy="204" r="1.6"/><circle cx="312" cy="204" r="1.6"/><circle cx="348" cy="204" r="1.6"/><circle cx="384" cy="204" r="1.6"/><circle cx="420" cy="204" r="1.6"/>
+              <circle cx="60" cy="240" r="1.6"/><circle cx="96" cy="240" r="1.6"/><circle cx="132" cy="240" r="1.6"/><circle cx="168" cy="240" r="1.6"/><circle cx="204" cy="240" r="1.6"/><circle cx="240" cy="240" r="1.6"/><circle cx="276" cy="240" r="1.6"/><circle cx="312" cy="240" r="1.6"/><circle cx="348" cy="240" r="1.6"/><circle cx="384" cy="240" r="1.6"/><circle cx="420" cy="240" r="1.6"/>
+              <circle cx="60" cy="276" r="1.6"/><circle cx="96" cy="276" r="1.6"/><circle cx="132" cy="276" r="1.6"/><circle cx="168" cy="276" r="1.6"/><circle cx="204" cy="276" r="1.6"/><circle cx="240" cy="276" r="1.6"/><circle cx="276" cy="276" r="1.6"/><circle cx="312" cy="276" r="1.6"/><circle cx="348" cy="276" r="1.6"/><circle cx="384" cy="276" r="1.6"/><circle cx="420" cy="276" r="1.6"/>
+              <circle cx="60" cy="312" r="1.6"/><circle cx="96" cy="312" r="1.6"/><circle cx="132" cy="312" r="1.6"/><circle cx="168" cy="312" r="1.6"/><circle cx="204" cy="312" r="1.6"/><circle cx="240" cy="312" r="1.6"/><circle cx="276" cy="312" r="1.6"/><circle cx="312" cy="312" r="1.6"/><circle cx="348" cy="312" r="1.6"/><circle cx="384" cy="312" r="1.6"/><circle cx="420" cy="312" r="1.6"/>
+              <circle cx="60" cy="348" r="1.6"/><circle cx="96" cy="348" r="1.6"/><circle cx="132" cy="348" r="1.6"/><circle cx="168" cy="348" r="1.6"/><circle cx="204" cy="348" r="1.6"/><circle cx="240" cy="348" r="1.6"/><circle cx="276" cy="348" r="1.6"/><circle cx="312" cy="348" r="1.6"/><circle cx="348" cy="348" r="1.6"/><circle cx="384" cy="348" r="1.6"/><circle cx="420" cy="348" r="1.6"/>
+              <circle cx="60" cy="384" r="1.6"/><circle cx="96" cy="384" r="1.6"/><circle cx="132" cy="384" r="1.6"/><circle cx="168" cy="384" r="1.6"/><circle cx="204" cy="384" r="1.6"/><circle cx="240" cy="384" r="1.6"/><circle cx="276" cy="384" r="1.6"/><circle cx="312" cy="384" r="1.6"/><circle cx="348" cy="384" r="1.6"/><circle cx="384" cy="384" r="1.6"/><circle cx="420" cy="384" r="1.6"/>
+              <circle cx="60" cy="420" r="1.6"/><circle cx="96" cy="420" r="1.6"/><circle cx="132" cy="420" r="1.6"/><circle cx="168" cy="420" r="1.6"/><circle cx="204" cy="420" r="1.6"/><circle cx="240" cy="420" r="1.6"/><circle cx="276" cy="420" r="1.6"/><circle cx="312" cy="420" r="1.6"/><circle cx="348" cy="420" r="1.6"/><circle cx="384" cy="420" r="1.6"/><circle cx="420" cy="420" r="1.6"/>
+            </g>
+          </g>
+
+          <!-- Agent traversal path -->
+          <path d="M 120 200 Q 200 140 280 200 T 380 320" fill="none" stroke="#b8431f" stroke-width="1.2" stroke-dasharray="3 4" opacity="0.7">
+            <animate attributeName="stroke-dashoffset" from="0" to="-28" dur="6s" repeatCount="indefinite"/>
+          </path>
+          <path d="M 140 360 Q 220 380 280 320 T 360 200" fill="none" stroke="#b8431f" stroke-width="0.8" stroke-dasharray="2 5" opacity="0.45"/>
+
+          <!-- Agent nodes -->
+          <circle cx="120" cy="200" r="5" fill="#b8431f"/>
+          <circle cx="280" cy="200" r="4" fill="#b8431f" opacity="0.7"/>
+          <circle cx="380" cy="320" r="5" fill="#b8431f"/>
+          <circle cx="140" cy="360" r="3.5" fill="#b8431f" opacity="0.65"/>
+          <circle cx="360" cy="200" r="3.5" fill="#b8431f" opacity="0.65"/>
+
+          <!-- Outer accent ring -->
+          <circle cx="120" cy="200" r="11" fill="none" stroke="#b8431f" stroke-width="0.6" opacity="0.4"/>
+          <circle cx="380" cy="320" r="11" fill="none" stroke="#b8431f" stroke-width="0.6" opacity="0.4"/>
+
+          <!-- Corner tick marks (technical-drawing feel) -->
+          <g stroke="#14110d" stroke-width="0.5" opacity="0.4">
+            <path d="M 20 20 L 40 20 M 20 20 L 20 40"/>
+            <path d="M 460 20 L 440 20 M 460 20 L 460 40"/>
+            <path d="M 20 460 L 40 460 M 20 460 L 20 440"/>
+            <path d="M 460 460 L 440 460 M 460 460 L 460 440"/>
+          </g>
+        </svg>
+        <div class="label">Fig. 01 — Agent traversal</div>
+      </div>
+
+      <div class="meta-strip reveal">
+        <div class="meta-item">
+          <div class="label">When</div>
+          <div class="value">December 2026<small>Exact date TBC</small></div>
+        </div>
+        <div class="meta-item">
+          <div class="label">Where</div>
+          <div class="value">Sydney<small>NeurIPS 2026 · pending</small></div>
+        </div>
+        <div class="meta-item">
+          <div class="label">Submit by</div>
+          <div class="value">Aug 29, 2026<small>AoE · OpenReview</small></div>
+        </div>
+        <div class="meta-item">
+          <div class="label">Format</div>
+          <div class="value">Hybrid<small>Short &amp; long papers</small></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- =============== 01 / SCHEDULE =============== -->
+  <section id="schedule">
+    <div class="container">
+      <div class="section-head">
+        <div class="meta">
+          <span class="section-num">01 / Programme</span>
+          <span class="eyebrow">Provisional schedule</span>
+        </div>
+        <h2>A day in the lab of the future.</h2>
+      </div>
+
+      <p class="lead" style="max-width: 60ch; margin-bottom: 3rem;">All speakers and panellists below are <em style="color: var(--accent); font-style: normal;">confirmed</em>. Titles and timings are subject to change.</p>
+
+      <div class="schedule">
+        <div class="slot">
+          <div class="time">09:00 – 09:10</div>
+          <div class="what">
+            <h4>Introduction &amp; opening remarks</h4>
+            <p class="desc">Including set-up of the live LLM tool that will synthesise discussion across the day.</p>
+          </div>
+        </div>
+
+        <div class="slot">
+          <div class="time">09:10 – 10:10</div>
+          <div class="what">
+            <h4>Industry Demos × 4</h4>
+            <ul class="sub-list">
+              <li>
+                <strong>Biomni</strong>
+                <span class="lead-by">Led by Kexin Huang</span>
+                Open-source, general-purpose biomedical AI agent for autonomous research tasks across diverse biomedical subfields.
+              </li>
+              <li>
+                <strong>Edison Scientific — Kosmos</strong>
+                <span class="lead-by">Led by Siddharth Narayan</span>
+                Plans and runs multi-step workflows end-to-end — hypothesis to data to synthesis — trialled with Incyte R&amp;D.
+              </li>
+              <li>
+                <strong>Science Machine</strong>
+                <span class="lead-by">Speaker TBC</span>
+                <!-- PLACEHOLDER: confirm speaker and description -->
+              </li>
+              <li>
+                <strong>Seqera</strong>
+                <span class="lead-by">Evan Floden, CEO</span>
+                The “agent-in-the-loop” platform for reproducible omics workflows across cloud and on-prem infrastructure.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="slot break">
+          <div class="time">10:15 – 10:55</div>
+          <div class="what"><h4>Poster Session 1 &amp; coffee</h4></div>
+        </div>
+
+        <div class="slot">
+          <div class="time">11:00 – 11:20</div>
+          <div class="what">
+            <h4>“Learnings from Roche’s adoption of AI in Omics R&amp;D”</h4>
+            <p class="desc">Ercan Suekuer (Roche).</p>
+          </div>
+        </div>
+
+        <div class="slot">
+          <div class="time">11:25 – 12:20</div>
+          <div class="what">
+            <h4>Academia × Industry — a structured dialogue, with Q&amp;A</h4>
+            <p class="desc">
+              Joseph Powell (Garvan Institute, Anthropic collaborator),
+              Ercan Suekuer (Roche),
+              Hana El-Samad (Altos Labs &amp; UCSF),
+              and Natasha Latysheva (Google DeepMind) surface disagreements and inspire collaboration across the academic / industry divide.
+            </p>
+          </div>
+        </div>
+
+        <div class="slot break">
+          <div class="time">12:25 – 13:25</div>
+          <div class="what">
+            <h4>Lunch &amp; optional breakout discussion</h4>
+            <p class="desc">Led by Lijia Yu (Teichmann lab post-doc).</p>
+          </div>
+        </div>
+
+        <div class="slot">
+          <div class="time">13:30 – 14:25</div>
+          <div class="what">
+            <h4>Panel — “Where is computational omics heading in the age of agents?”</h4>
+            <p class="desc">Jean Yang · Pengyi Yang · Luis Pedro Coelho. Followed by Q&amp;A.</p>
+          </div>
+        </div>
+
+        <div class="slot">
+          <div class="time">14:30 – 15:30</div>
+          <div class="what">
+            <h4>Contributed orals (10 min each)</h4>
+            <p class="desc">Each oral is paired with a discussant from an adjacent domain — a biologist on technical AI papers, a computer scientist on application papers — to elevate every session above a sequence of talks.</p>
+          </div>
+        </div>
+
+        <div class="slot break">
+          <div class="time">15:35 – 16:15</div>
+          <div class="what"><h4>Poster Session 2 &amp; coffee</h4></div>
+        </div>
+
+        <div class="slot">
+          <div class="time">16:20 – 16:55</div>
+          <div class="what">
+            <h4>Whitepaper discussion &amp; update</h4>
+            <p class="desc">A live, LLM-synthesised whitepaper is drafted across the day from talks, panels, breakouts, and audience notes — and reviewed here for submission as a citable position paper.</p>
+          </div>
+        </div>
+
+        <div class="slot keynote">
+          <div class="time">17:00 – 18:00</div>
+          <div class="what">
+            <h4>Keynote conversation — Fabian Theis &amp; Sara Teichmann</h4>
+            <p class="desc">Two architects of the Human Cell Atlas in conversation: from genomics and ML respectively, they span the data-to-discovery pipeline and reflect on a career’s worth of tech adoption in the omics — culminating in today’s shift to agentic AI.</p>
+          </div>
+        </div>
+
+        <div class="slot">
+          <div class="time">18:00 – 18:10</div>
+          <div class="what">
+            <h4>Closing remarks &amp; next steps for the community</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== 02 / ABOUT =============== -->
+  <section id="about">
+    <div class="container">
+      <div class="section-head">
+        <div class="meta">
+          <span class="section-num">02 / Overview</span>
+          <span class="eyebrow">The moment</span>
+        </div>
+        <h2>A paradigm shift, mid-flight.</h2>
+      </div>
+
+      <div class="overview-grid">
+        <div class="body">
+          <p>The development of next-generation sequencing and single-cell technologies brought data analysis to the forefront of molecular biology research. In 2026, with fast-paced advances in AI, our power to derive insight from this data is only increasing.</p>
+          <p>Agentic tools can now act as co-scientists — planning and executing multi-step bioinformatics analyses across the breadth of available tools, synthesising across transcriptomics, single-cell, and multi-omics workflows. They also bring their own challenges: long-context handling, reproducibility, data privacy, the absence of ground-truth, vast hypothesis spaces, and incomplete data.</p>
+          <p>At the cusp of this shift — when benchmarks are not yet established and know-how is unevenly distributed and siloed — this workshop brings the omics community together to set common ground.</p>
+        </div>
+        <aside class="pull-quote">
+          Confused or misinformed use of agentic AI, even with the best intentions, will hinder omics efforts. Equally, if legacy pipelines persist, the significant value-add of AI will be missed entirely.
+          <cite>— Workshop premise</cite>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== 03 / PILLARS =============== -->
+  <section id="pillars">
+    <div class="container">
+      <div class="section-head">
+        <div class="meta">
+          <span class="section-num">03 / Scope</span>
+          <span class="eyebrow">Three core areas</span>
+        </div>
+        <h2>What we will address.</h2>
+      </div>
+
+      <div class="pillars">
+        <div class="pillar">
+          <h3>Capabilities &amp; limitations of AI agents</h3>
+          <ul>
+            <li>What AI innovations in other domains have yet to be applied to omics?</li>
+            <li>How do agents expand the space of feasible analysis?</li>
+          </ul>
+        </div>
+        <div class="pillar">
+          <h3>Co-scientist: integration into workflows</h3>
+          <ul>
+            <li>How can human-in-the-loop workflows make agent–human collaboration more than the sum of its parts?</li>
+            <li>What risks do AI agents bring to current workflows, and how can these be overcome?</li>
+            <li>What is bottlenecking adoption — in academia and industry?</li>
+          </ul>
+        </div>
+        <div class="pillar">
+          <h3>Benchmarking, evaluation &amp; reporting</h3>
+          <ul>
+            <li>How should we evaluate end-to-end agent performance on scientific workflows?</li>
+            <li>What metrics capture scientific correctness, not just code correctness?</li>
+            <li>What constitutes a reproducible, auditable agent-driven analysis?</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== 04 / DATES =============== -->
+  <section id="dates">
+    <div class="container">
+      <div class="section-head">
+        <div class="meta">
+          <span class="section-num">04 / Calendar</span>
+          <span class="eyebrow">Important dates</span>
+        </div>
+        <h2>Mark these.</h2>
+      </div>
+
+      <div class="dates-grid">
+        <div class="date-row">
+          <div class="marker"></div>
+          <small>Submission deadline</small>
+          <div class="when">Aug 29</div>
+          <div class="label">2026 · Anywhere on Earth. Anonymised papers via OpenReview.</div>
+        </div>
+        <div class="date-row">
+          <div class="marker"></div>
+          <small>Decisions</small>
+          <div class="when">Sep 29</div>
+          <div class="label">2026 · Accept / reject notifications to authors.</div>
+        </div>
+        <div class="date-row">
+          <div class="marker"></div>
+          <small>Workshop</small>
+          <div class="when">Dec 2026</div>
+          <div class="label">At NeurIPS 2026, Sydney. <!-- PLACEHOLDER: confirm exact day --></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== 05 / SPEAKERS =============== -->
+  <section id="speakers">
+    <div class="container">
+      <div class="section-head">
+        <div class="meta">
+          <span class="section-num">05 / Voices</span>
+          <span class="eyebrow">Confirmed speakers &amp; panellists</span>
+        </div>
+        <h2>The room.</h2>
+      </div>
+
+      <p class="lead" style="max-width: 60ch; margin-bottom: 2.5rem;">
+        Photos go in an <code style="font-family: var(--mono); font-size: 0.85em; background: var(--paper-warm); padding: 0.1em 0.3em;">img/</code> folder next to <code style="font-family: var(--mono); font-size: 0.85em; background: var(--paper-warm); padding: 0.1em 0.3em;">index.html</code>. Each card already has the right <code style="font-family: var(--mono); font-size: 0.85em; background: var(--paper-warm); padding: 0.1em 0.3em;">&lt;img&gt;</code> tag — just drop the file in and uncomment.
+      </p>
+
+      <div class="people-grid">
+        <div class="person">
+          <div class="avatar"><!-- <img src="img/kexin-huang.jpg" alt="Kexin Huang"> -->KH</div>
+          <div class="role">Demo</div>
+          <h4>Kexin Huang</h4>
+          <p class="affil">Stanford AI Lab · Phylo (Biomni)</p>
+        </div>
+        <div class="person">
+          <div class="avatar"><!-- <img src="img/siddharth-narayan.jpg" alt="Siddharth Narayan"> -->SN</div>
+          <div class="role">Demo</div>
+          <h4>Siddharth Narayan</h4>
+          <p class="affil">Edison Scientific (Kosmos)</p>
+        </div>
+        <div class="person">
+          <div class="avatar"><!-- <img src="img/evan-floden.jpg" alt="Evan Floden"> -->EF</div>
+          <div class="role">Demo</div>
+          <h4>Evan Floden</h4>
+          <p class="affil">Seqera · CEO</p>
+        </div>
+        <div class="person">
+          <div class="avatar"><!-- <img src="img/ercan-suekuer.jpg" alt="Ercan Suekuer"> -->ES</div>
+          <div class="role">Invited talk</div>
+          <h4>Ercan Suekuer</h4>
+          <p class="affil">Roche</p>
+        </div>
+        <div class="person">
+          <div class="avatar"><!-- <img src="img/joseph-powell.jpg" alt="Joseph Powell"> -->JP</div>
+          <div class="role">Dialogue</div>
+          <h4>Joseph Powell</h4>
+          <p class="affil">Garvan Institute of Medical Research</p>
+        </div>
+        <div class="person">
+          <div class="avatar"><!-- <img src="img/hana-elsamad.jpg" alt="Hana El-Samad"> -->HE</div>
+          <div class="role">Dialogue</div>
+          <h4>Hana El-Samad</h4>
+          <p class="affil">Altos Labs · UCSF</p>
+        </div>
+        <div class="person">
+          <div class="avatar"><!-- <img src="img/natasha-latysheva.jpg" alt="Natasha Latysheva"> -->NL</div>
+          <div class="role">Dialogue</div>
+          <h4>Natasha Latysheva</h4>
+          <p class="affil">Google DeepMind</p>
+        </div>
+        <div class="person">
+          <div class="avatar"><!-- <img src="img/lijia-yu.jpg" alt="Lijia Yu"> -->LY</div>
+          <div class="role">Breakout</div>
+          <h4>Lijia Yu</h4>
+          <p class="affil">Teichmann Lab, post-doc</p>
+        </div>
+        <div class="person">
+          <div class="avatar"><!-- <img src="img/jean-yang.jpg" alt="Jean Yang"> -->JY</div>
+          <div class="role">Panel</div>
+          <h4>Jean Yang</h4>
+          <p class="affil">University of Sydney</p>
+        </div>
+        <div class="person">
+          <div class="avatar"><!-- <img src="img/pengyi-yang.jpg" alt="Pengyi Yang"> -->PY</div>
+          <div class="role">Panel</div>
+          <h4>Pengyi Yang</h4>
+          <p class="affil">University of Sydney</p>
+        </div>
+        <div class="person">
+          <div class="avatar"><!-- <img src="img/luis-pedro-coelho.jpg" alt="Luis Pedro Coelho"> -->LC</div>
+          <div class="role">Panel</div>
+          <h4>Luis Pedro Coelho</h4>
+          <p class="affil">Queensland University of Technology</p>
+        </div>
+        <div class="person">
+          <div class="avatar"><!-- <img src="img/fabian-theis.jpg" alt="Fabian Theis"> -->FT</div>
+          <div class="role">Keynote</div>
+          <h4>Fabian Theis</h4>
+          <p class="affil">Helmholtz Munich · Human Cell Atlas</p>
+        </div>
+        <div class="person">
+          <div class="avatar"><!-- <img src="img/sara-teichmann.jpg" alt="Sara Teichmann"> -->ST</div>
+          <div class="role">Keynote</div>
+          <h4>Sara Teichmann</h4>
+          <p class="affil">Wellcome Sanger Institute · Human Cell Atlas</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== 06 / CFP =============== -->
+  <section id="submit">
+    <div class="container">
+      <div class="section-head">
+        <div class="meta">
+          <span class="section-num">06 / Submit</span>
+          <span class="eyebrow">Call for papers</span>
+        </div>
+        <h2>Bring your work.</h2>
+      </div>
+
+      <div class="cfp-grid">
+        <div class="cfp-card">
+          <h3>What we’re looking for</h3>
+          <ul>
+            <li>
+              <strong>Capabilities &amp; limitations</strong>
+              Novel agent architectures, tool-use strategies, or capability evaluations relevant to omics.
+            </li>
+            <li>
+              <strong>Workflow integration</strong>
+              Human-in-the-loop systems, adoption case studies, risk assessments.
+            </li>
+            <li>
+              <strong>Benchmarks &amp; evaluation</strong>
+              New benchmarks, metrics for scientific correctness, reproducibility frameworks.
+            </li>
+            <li>
+              <strong>Position pieces</strong>
+              Reasoned arguments on standards, governance, or community norms.
+            </li>
+          </ul>
+        </div>
+
+        <div class="cfp-card">
+          <h3>Logistics</h3>
+          <ul>
+            <li>
+              <strong>Format</strong>
+              Short papers (≤ 5 pages) and long papers — we accept both to widen access for early-stage researchers.
+            </li>
+            <li>
+              <strong>Anonymisation</strong>
+              Submissions must be anonymised. Non-anonymised papers will be desk-rejected.
+            </li>
+            <li>
+              <strong>Conflict of interest</strong>
+              No organiser reviews a submission from their own organisation.
+            </li>
+            <li>
+              <strong>Dual submission</strong>
+              Work presented at the NeurIPS main conference cannot also appear here. Authors confirm compliance at submission.
+            </li>
+            <li>
+              <strong>Submission portal</strong>
+              <!-- PLACEHOLDER: paste OpenReview link here once venue is created -->
+              OpenReview link to follow.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== 07 / ORGANISERS =============== -->
+  <section id="organizers">
+    <div class="container">
+      <div class="section-head">
+        <div class="meta">
+          <span class="section-num">07 / Organisers</span>
+          <span class="eyebrow">Who is running this</span>
+        </div>
+        <h2>Your organisers.</h2>
+      </div>
+
+      <div class="org-list">
+        <div class="org">
+          <div class="portrait"><!-- <img src="img/kexin-huang.jpg" alt="Kexin Huang"> -->KH</div>
+          <div class="name-block">
+            <h4>Kexin Huang</h4>
+            <p class="affil">Stanford AI Lab<br/>CEO &amp; Co-founder, Phylo</p>
+          </div>
+          <p class="bio">
+            Phylo’s Biomni Lab is an integrated environment for AI-native biology, allowing scientists to collaborate with AI agents to accelerate discovery. A pioneer in foundation models for therapeutics, Kexin bridges machine learning research and practical drug discovery, with a professional footprint across Genentech, GSK, Pfizer, and IQVIA. He brings a bench-to-browser perspective that grounds the workshop in technical feasibility and industrial scalability.
+          </p>
+        </div>
+
+        <div class="org">
+          <div class="portrait"><!-- <img src="img/hanna-szafranska.jpg" alt="Hanna Szafranska"> -->HS</div>
+          <div class="name-block">
+            <h4>Hanna Szafranska</h4>
+            <p class="affil">MRC Laboratory of Molecular Biology<br/>University of Cambridge · PhD candidate</p>
+          </div>
+          <p class="bio">
+            As an early-career researcher, Hanna lives the day-to-day reality of data bottlenecks, omics pipelines, and reproducibility concerns — and the difficulty of integrating agentic AI into them. She has a strong track record in community building and education.
+            <!-- PLACEHOLDER: insert online course name & society events -->
+          </p>
+        </div>
+
+        <div class="org">
+          <div class="portrait"><!-- <img src="img/izzy-barrass.jpg" alt="Izzy Barrass"> -->IB</div>
+          <div class="name-block">
+            <h4>Izzy Barrass</h4>
+            <p class="affil">Founder &amp; CEO, Aethra Labs<br/>Centre for AI Safety</p>
+          </div>
+          <p class="bio">
+            Aethra Labs commercialises research into the usefulness and security of AI agents, with deep expertise in trustworthy and verifiable agentic behaviour — directly relevant to omics workflows that handle sensitive patient data. Izzy previously organised the NeurIPS 2024 workshop “Towards Safe and Trustworthy Agents,” and brings the governance framing needed to keep “co-scientists” inside ethical and secure boundaries.
+          </p>
+        </div>
+
+        <div class="org">
+          <div class="portrait"><!-- <img src="img/noura-ezaz-nikpay.jpg" alt="Noura Ezaz-Nikpay"> -->NE</div>
+          <div class="name-block">
+            <h4>Noura Ezaz-Nikpay</h4>
+            <p class="affil">Department of Computing<br/>Imperial College London · PhD candidate</p>
+          </div>
+          <p class="bio">
+            Noura is a PhD student in AI and ML, and the student representative for the AI4Healthcare Centre at Imperial — connecting the workshop to a growing community of AI-for-health researchers across the UK.
+          </p>
+        </div>
+      </div>
+
+      <p style="margin-top: 2.5rem; font-family: var(--mono); font-size: 0.78rem; color: var(--muted); letter-spacing: 0.04em;">
+        No author has submitted a related proposal to other venues, and no related workshop is under review at NeurIPS 2026.
+      </p>
+    </div>
+  </section>
+
+  <!-- =============== SIGNUP =============== -->
+  <section class="signup" id="signup">
+    <div class="container">
+      <div>
+        <h2>Join the <em>mailing list</em>.</h2>
+        <p class="lead" style="margin-top: 1.5rem; max-width: 50ch;">
+          Get submission reminders, schedule updates, and the workshop whitepaper once it lands. All accepted authors are added automatically.
+        </p>
+      </div>
+      <!-- PLACEHOLDER: replace action with your form provider -->
+      <form class="signup-form" action="#" method="post" onsubmit="event.preventDefault(); alert('Connect this form to your mailing list provider.');">
+        <input type="email" name="email" placeholder="your.email@institution.edu" required aria-label="Email" />
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <span>© 2026 · Copilots → Co-scientists in Omics · NeurIPS 2026 Workshop</span>
+      <span>
+        Contact: <a href="mailto:hello@example.org">hello@example.org</a>
+        <!-- PLACEHOLDER: set up a workshop-specific email -->
+      </span>
+    </div>
+  </footer>
+
+  <script>
+    const reveal = (els) => {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('in');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      els.forEach(el => io.observe(el));
+    };
+    reveal(document.querySelectorAll('.reveal'));
+    document.querySelectorAll('.hero .reveal').forEach((el, i) => {
+      el.style.transitionDelay = (i * 0.12) + 's';
+    });
+  </script>
+</body>
+</html>
