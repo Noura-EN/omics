@@ -47,7 +47,6 @@
         radial-gradient(circle at 80% 70%, rgba(184,67,31,0.025) 0, transparent 50%);
     }
 
-    /* ===== Type ===== */
     h1, h2, h3, h4 {
       font-family: var(--serif);
       font-weight: 500;
@@ -89,7 +88,6 @@
       font-variation-settings: "opsz" 36;
     }
 
-    /* ===== Layout ===== */
     .container {
       max-width: var(--max);
       margin: 0 auto;
@@ -118,7 +116,6 @@
       letter-spacing: 0.16em;
     }
 
-    /* ===== Nav ===== */
     nav.top {
       position: sticky;
       top: 0;
@@ -144,7 +141,6 @@
     nav.top li a:hover { color: var(--accent); opacity: 1; }
     @media (max-width: 720px) { nav.top ul { display: none; } }
 
-    /* ===== Hero ===== */
     .hero {
       padding: clamp(3rem, 7vw, 6rem) 0 clamp(3rem, 6vw, 5rem);
       position: relative;
@@ -241,7 +237,6 @@
       margin-top: 0.2rem;
     }
 
-    /* ===== Schedule ===== */
     .schedule { display: grid; grid-template-columns: 1fr; }
     .slot {
       display: grid;
@@ -300,7 +295,6 @@
       letter-spacing: 0.04em;
     }
 
-    /* ===== Overview ===== */
     .overview-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
     @media (min-width: 900px) {
       .overview-grid { grid-template-columns: 1.4fr 1fr; gap: 4rem; }
@@ -331,7 +325,6 @@
       margin-top: 1rem;
     }
 
-    /* ===== Three Pillars ===== */
     .pillars {
       display: grid;
       grid-template-columns: 1fr;
@@ -366,7 +359,6 @@
     }
     .pillar li:first-child { border-top: none; padding-top: 0; }
 
-    /* ===== Dates (FIXED: more breathing room) ===== */
     .dates-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -426,7 +418,6 @@
       max-width: 28ch;
     }
 
-    /* ===== Speakers ===== */
     .people-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -485,7 +476,6 @@
       color: var(--accent);
     }
 
-    /* ===== Organizers ===== */
     .org-list { display: grid; grid-template-columns: 1fr; gap: 0; }
     .org {
       display: grid;
@@ -543,7 +533,6 @@
     }
     .org .bio { font-size: 0.95rem; color: var(--ink-soft); max-width: 65ch; }
 
-    /* ===== CFP ===== */
     .cfp-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
     @media (min-width: 900px) { .cfp-grid { grid-template-columns: 1fr 1fr; gap: 4rem; } }
     .cfp-card { padding: 2rem; background: var(--paper-warm); border: 1px solid var(--line); }
@@ -558,7 +547,6 @@
     .cfp-card li:first-child { border-top: none; }
     .cfp-card li strong { color: var(--ink); display: block; font-weight: 500; margin-bottom: 0.15rem; }
 
-    /* ===== Signup / Footer ===== */
     .signup {
       padding: clamp(4rem, 7vw, 6rem) 0;
       background: var(--ink);
@@ -614,7 +602,6 @@
     footer .container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
     footer a { color: var(--accent-soft); border: none; }
 
-    /* ===== Reveal ===== */
     .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; }
     .reveal.in { opacity: 1; transform: translateY(0); }
     @media (prefers-reduced-motion: reduce) {
@@ -627,7 +614,6 @@
 </head>
 <body>
 
-  <!-- =============== NAV =============== -->
   <nav class="top">
     <div class="inner">
       <a href="#top" class="brand">
@@ -644,7 +630,6 @@
     </div>
   </nav>
 
-  <!-- =============== HERO =============== -->
   <header class="hero" id="top">
     <div class="container">
       <div>
@@ -663,7 +648,6 @@
         </p>
       </div>
 
-      <!-- Hero illustration: stylised cell + agent-paths -->
       <div class="hero-art reveal" aria-hidden="true">
         <svg viewBox="0 0 480 480" xmlns="http://www.w3.org/2000/svg">
           <defs>
@@ -681,15 +665,10 @@
               <rect width="480" height="480" fill="url(#dotMask)"/>
             </mask>
           </defs>
-
-          <!-- Cell membranes -->
           <circle cx="240" cy="240" r="220" fill="none" stroke="#14110d" stroke-width="0.6" opacity="0.18"/>
           <circle cx="240" cy="240" r="160" fill="none" stroke="#14110d" stroke-width="0.4" opacity="0.13"/>
           <circle cx="240" cy="240" r="220" fill="url(#cellFade)" opacity="0.5"/>
-
-          <!-- Halftone dot grid (masked to fade at edges) -->
           <g mask="url(#fadeMask)" fill="#14110d" opacity="0.45">
-            <!-- 12x12 grid of dots, spacing 36 -->
             <g>
               <circle cx="60" cy="60" r="1.6"/><circle cx="96" cy="60" r="1.6"/><circle cx="132" cy="60" r="1.6"/><circle cx="168" cy="60" r="1.6"/><circle cx="204" cy="60" r="1.6"/><circle cx="240" cy="60" r="1.6"/><circle cx="276" cy="60" r="1.6"/><circle cx="312" cy="60" r="1.6"/><circle cx="348" cy="60" r="1.6"/><circle cx="384" cy="60" r="1.6"/><circle cx="420" cy="60" r="1.6"/>
               <circle cx="60" cy="96" r="1.6"/><circle cx="96" cy="96" r="1.6"/><circle cx="132" cy="96" r="1.6"/><circle cx="168" cy="96" r="1.6"/><circle cx="204" cy="96" r="1.6"/><circle cx="240" cy="96" r="1.6"/><circle cx="276" cy="96" r="1.6"/><circle cx="312" cy="96" r="1.6"/><circle cx="348" cy="96" r="1.6"/><circle cx="384" cy="96" r="1.6"/><circle cx="420" cy="96" r="1.6"/>
@@ -704,25 +683,17 @@
               <circle cx="60" cy="420" r="1.6"/><circle cx="96" cy="420" r="1.6"/><circle cx="132" cy="420" r="1.6"/><circle cx="168" cy="420" r="1.6"/><circle cx="204" cy="420" r="1.6"/><circle cx="240" cy="420" r="1.6"/><circle cx="276" cy="420" r="1.6"/><circle cx="312" cy="420" r="1.6"/><circle cx="348" cy="420" r="1.6"/><circle cx="384" cy="420" r="1.6"/><circle cx="420" cy="420" r="1.6"/>
             </g>
           </g>
-
-          <!-- Agent traversal path -->
           <path d="M 120 200 Q 200 140 280 200 T 380 320" fill="none" stroke="#b8431f" stroke-width="1.2" stroke-dasharray="3 4" opacity="0.7">
             <animate attributeName="stroke-dashoffset" from="0" to="-28" dur="6s" repeatCount="indefinite"/>
           </path>
           <path d="M 140 360 Q 220 380 280 320 T 360 200" fill="none" stroke="#b8431f" stroke-width="0.8" stroke-dasharray="2 5" opacity="0.45"/>
-
-          <!-- Agent nodes -->
           <circle cx="120" cy="200" r="5" fill="#b8431f"/>
           <circle cx="280" cy="200" r="4" fill="#b8431f" opacity="0.7"/>
           <circle cx="380" cy="320" r="5" fill="#b8431f"/>
           <circle cx="140" cy="360" r="3.5" fill="#b8431f" opacity="0.65"/>
           <circle cx="360" cy="200" r="3.5" fill="#b8431f" opacity="0.65"/>
-
-          <!-- Outer accent ring -->
           <circle cx="120" cy="200" r="11" fill="none" stroke="#b8431f" stroke-width="0.6" opacity="0.4"/>
           <circle cx="380" cy="320" r="11" fill="none" stroke="#b8431f" stroke-width="0.6" opacity="0.4"/>
-
-          <!-- Corner tick marks (technical-drawing feel) -->
           <g stroke="#14110d" stroke-width="0.5" opacity="0.4">
             <path d="M 20 20 L 40 20 M 20 20 L 20 40"/>
             <path d="M 460 20 L 440 20 M 460 20 L 460 40"/>
@@ -771,105 +742,100 @@
         <div class="slot">
           <div class="time">09:00 – 09:10</div>
           <div class="what">
-            <h4>Introduction &amp; opening remarks</h4>
-            <p class="desc">Including set-up of the live LLM tool that will synthesise discussion across the day.</p>
+            <h4>Opening Remarks</h4>
           </div>
         </div>
 
         <div class="slot">
           <div class="time">09:10 – 10:10</div>
           <div class="what">
-            <h4>Industry Demos × 4</h4>
+            <h4>Industry Demos × 3</h4>
             <ul class="sub-list">
               <li>
                 <strong>Biomni</strong>
-                Kexin Huang
-                </li>
+                An open-source, general-purpose biomedical AI agent designed to autonomously execute research tasks across diverse biomedical subfields, helping scientists enhance productivity and generate testable hypotheses.
+              </li>
               <li>
                 <strong>Edison Scientific: Kosmos</strong>
-                Siddharth Narayan
-                 </li>
+                Plans and runs multi-step scientific workflows end-to-end, proposing hypotheses, fetching data, and synthesising findings into reports. Trialed in the pharmaceutical industry through collaboration with the Incyte Corporation R&amp;D team.
+              </li>
               <li>
                 <strong>Seqera</strong>
-                Evan Floden
-                </li>
+                A platform enabling genomic and proteomic analyses across any cloud or on-premise infrastructure with full reproducibility. Seqera has built an "agent-in-the-loop" platform where human scientists and AI agents collaborate to accelerate discovery. Demo led by Evan Floden, CEO.
+              </li>
             </ul>
           </div>
         </div>
 
         <div class="slot break">
           <div class="time">10:15 – 10:55</div>
-          <div class="what"><h4>Poster Session 1 &amp; coffee</h4></div>
+          <div class="what"><h4>Poster Session 1 &amp; Coffee Break</h4></div>
         </div>
 
         <div class="slot">
           <div class="time">11:00 – 11:20</div>
           <div class="what">
-            <h4>“Learnings from Roche’s adoption of AI in Omics R&amp;D”</h4>
-            <p class="desc">Ercan Suekuer (Roche).</p>
+            <h4>Invited Talk: "Learnings from Roche's adoption of AI in Omics R&amp;D"</h4>
+            <p class="desc">Ercan Suekuer, Head of AI Incubator, Roche.</p>
           </div>
         </div>
 
         <div class="slot">
           <div class="time">11:25 – 12:20</div>
           <div class="what">
-            <h4>Academia × Industry — a structured dialogue, with Q&amp;A</h4>
-            <p class="desc">
-              Joseph Powell (Garvan Institute, Anthropic collaborator),
-              Ercan Suekuer (Roche),
-              Hana El-Samad (Altos Labs &amp; UCSF),
-              and Natasha Latysheva (Google DeepMind) surface disagreements and inspire collaboration across the academic / industry divide.
-            </p>
+            <h4>Academia–Industry Dialogue + Q&amp;A</h4>
+            <p class="desc">A structured dialogue to surface disagreements and inspire collaboration across the academic/industry divide on agentic AI in omics.</p>
+            <ul class="sub-list">
+              <li><strong>Joseph Powell</strong> Director of Translational Genomics, Garvan Institute; Anthropic collaborator</li>
+              <li><strong>Ercan Suekuer</strong> Head of AI Incubator, Roche</li>
+              <li><strong>Natasha Latysheva</strong> Senior Research Engineer, Google DeepMind</li>
+            </ul>
           </div>
         </div>
 
         <div class="slot break">
           <div class="time">12:25 – 13:25</div>
-          <div class="what">
-            <h4>Lunch &amp; optional breakout discussion</h4>
-          </div>
+          <div class="what"><h4>Lunch &amp; Optional Breakout Groups</h4></div>
         </div>
 
         <div class="slot">
           <div class="time">13:30 – 14:25</div>
           <div class="what">
-            <h4>Panel — “Where is computational omics heading in the age of agents?”</h4>
-            <p class="desc">Jean Yang · Pengyi Yang · Luis Pedro Coelho. Followed by Q&amp;A.</p>
+            <h4>Panel: "Where is computational omics heading in the age of agents?" + Q&amp;A</h4>
+            <p class="desc">This panel focuses on the future outlook for agentic AI, discussing the specific problems AI can help tackle.</p>
+            <ul class="sub-list">
+              <li><strong>Jean Yang</strong> Director, Sydney Precision Data Science Centre</li>
+              <li><strong>Pengyi Yang</strong> Head of Computational Systems, CMRI</li>
+              <li><strong>Luis Pedro Coelho</strong> Big Data Biology Lab, QUT</li>
+            </ul>
           </div>
         </div>
 
         <div class="slot">
-          <div class="time">14:30 – 15:30</div>
+          <div class="time">14:30 – 16:00</div>
           <div class="what">
-            <h4>Contributed orals</h4>
+            <h4>Spotlight Talks</h4>
+            <p class="desc">Selected contributed papers presented as short talks.</p>
           </div>
         </div>
 
         <div class="slot break">
-          <div class="time">15:35 – 16:15</div>
-          <div class="what"><h4>Poster Session 2 &amp; coffee</h4></div>
-        </div>
-
-        <div class="slot">
-          <div class="time">16:20 – 16:55</div>
-          <div class="what">
-            <h4>Whitepaper discussion &amp; update</h4>
-            <p class="desc">A live, LLM-synthesised whitepaper is drafted across the day from talks, panels, breakouts, and audience notes.</p>
-          </div>
+          <div class="time">16:05 – 16:55</div>
+          <div class="what"><h4>Poster Session 2 &amp; Coffee Break</h4></div>
         </div>
 
         <div class="slot keynote">
           <div class="time">17:00 – 18:00</div>
           <div class="what">
-            <h4>Keynote conversation — Fabian Theis &amp; Sara Teichmann</h4>
-            <p class="desc">Two architects of the Human Cell Atlas in conversation: from genomics and ML respectively, they span the data-to-discovery pipeline and reflect on a career’s worth of tech adoption in the omics — culminating in today’s shift to agentic AI.</p>
+            <h4>Keynote Conversation: Fabian Theis &amp; Sara Teichmann of the Human Cell Atlas</h4>
+            <p class="desc">As key researchers behind The Human Cell Atlas, Fabian and Sara have driven the transition from traditional biology to precision medicine. This conversation centres their perspectives on tech adoption in omics over the course of their careers, and how this shapes their current engagement with agentic AI. With Sara's background in genomics and Fabian's in AI, together they span the full data-to-discovery pipeline.</p>
           </div>
         </div>
 
         <div class="slot">
           <div class="time">18:00 – 18:10</div>
           <div class="what">
-            <h4>Closing remarks &amp; next steps for the community</h4>
+            <h4>Closing Remarks &amp; Next Steps for the Community</h4>
           </div>
         </div>
       </div>
@@ -987,73 +953,67 @@
 
       <div class="people-grid">
         <div class="person">
-          <div class="avatar"><!-- <img src="img/kexin-huang.jpg" alt="Kexin Huang"> -->KH</div>
+          <div class="avatar">KH</div>
           <div class="role">Demo</div>
           <h4>Kexin Huang</h4>
           <p class="affil">Stanford AI Lab · Phylo (Biomni)</p>
         </div>
         <div class="person">
-          <div class="avatar"><!-- <img src="img/siddharth-narayan.jpg" alt="Siddharth Narayan"> -->SN</div>
+          <div class="avatar">SN</div>
           <div class="role">Demo</div>
           <h4>Siddharth Narayan</h4>
           <p class="affil">Edison Scientific (Kosmos)</p>
         </div>
         <div class="person">
-          <div class="avatar"><!-- <img src="img/evan-floden.jpg" alt="Evan Floden"> -->EF</div>
+          <div class="avatar">EF</div>
           <div class="role">Demo</div>
           <h4>Evan Floden</h4>
           <p class="affil">Seqera · CEO</p>
         </div>
         <div class="person">
-          <div class="avatar"><!-- <img src="img/ercan-suekuer.jpg" alt="Ercan Suekuer"> -->ES</div>
+          <div class="avatar">ES</div>
           <div class="role">Invited talk</div>
           <h4>Ercan Suekuer</h4>
-          <p class="affil">Roche</p>
+          <p class="affil">Head of AI Incubator, Roche</p>
         </div>
         <div class="person">
-          <div class="avatar"><!-- <img src="img/joseph-powell.jpg" alt="Joseph Powell"> -->JP</div>
+          <div class="avatar">JP</div>
           <div class="role">Dialogue</div>
           <h4>Joseph Powell</h4>
-          <p class="affil">Garvan Institute of Medical Research</p>
+          <p class="affil">Director of Translational Genomics, Garvan Institute</p>
         </div>
         <div class="person">
-          <div class="avatar"><!-- <img src="img/hana-elsamad.jpg" alt="Hana El-Samad"> -->HE</div>
-          <div class="role">Dialogue</div>
-          <h4>Hana El-Samad</h4>
-          <p class="affil">Altos Labs · UCSF</p>
-        </div>
-        <div class="person">
-          <div class="avatar"><!-- <img src="img/natasha-latysheva.jpg" alt="Natasha Latysheva"> -->NL</div>
+          <div class="avatar">NL</div>
           <div class="role">Dialogue</div>
           <h4>Natasha Latysheva</h4>
-          <p class="affil">Google DeepMind</p>
+          <p class="affil">Senior Research Engineer, Google DeepMind</p>
         </div>
         <div class="person">
-          <div class="avatar"><!-- <img src="img/jean-yang.jpg" alt="Jean Yang"> -->JY</div>
+          <div class="avatar">JY</div>
           <div class="role">Panel</div>
           <h4>Jean Yang</h4>
-          <p class="affil">University of Sydney</p>
+          <p class="affil">Director, Sydney Precision Data Science Centre</p>
         </div>
         <div class="person">
-          <div class="avatar"><!-- <img src="img/pengyi-yang.jpg" alt="Pengyi Yang"> -->PY</div>
+          <div class="avatar">PY</div>
           <div class="role">Panel</div>
           <h4>Pengyi Yang</h4>
-          <p class="affil">University of Sydney</p>
+          <p class="affil">Head of Computational Systems, CMRI</p>
         </div>
         <div class="person">
-          <div class="avatar"><!-- <img src="img/luis-pedro-coelho.jpg" alt="Luis Pedro Coelho"> -->LC</div>
+          <div class="avatar">LC</div>
           <div class="role">Panel</div>
           <h4>Luis Pedro Coelho</h4>
-          <p class="affil">Queensland University of Technology</p>
+          <p class="affil">Big Data Biology Lab, QUT</p>
         </div>
         <div class="person">
-          <div class="avatar"><!-- <img src="img/fabian-theis.jpg" alt="Fabian Theis"> -->FT</div>
+          <div class="avatar">FT</div>
           <div class="role">Keynote</div>
           <h4>Fabian Theis</h4>
           <p class="affil">Helmholtz Munich · Human Cell Atlas</p>
         </div>
         <div class="person">
-          <div class="avatar"><!-- <img src="img/sara-teichmann.jpg" alt="Sara Teichmann"> -->ST</div>
+          <div class="avatar">ST</div>
           <div class="role">Keynote</div>
           <h4>Sara Teichmann</h4>
           <p class="affil">Wellcome Sanger Institute · Human Cell Atlas</p>
@@ -1075,7 +1035,7 @@
 
       <div class="cfp-grid">
         <div class="cfp-card">
-          <h3>What we’re looking for</h3>
+          <h3>What we're looking for</h3>
           <ul>
             <li>
               <strong>Capabilities &amp; limitations</strong>
@@ -1101,7 +1061,7 @@
           <ul>
             <li>
               <strong>Format</strong>
-              Short papers (< 5 pages) and long papers (< 10 pages)
+              Short papers (&lt; 5 pages) and long papers (&lt; 10 pages)
             </li>
             <li>
               <strong>Anonymisation</strong>
@@ -1113,7 +1073,6 @@
             </li>
             <li>
               <strong>Submission portal</strong>
-              <!-- PLACEHOLDER: paste OpenReview link here once venue is created -->
               OpenReview link to follow.
             </li>
           </ul>
@@ -1133,52 +1092,61 @@
         <h2>Your organisers.</h2>
       </div>
 
-      <div class="org">
-          <div class="portrait"><!-- <img src="img/hanna-szafranska.jpg" alt="Hanna Szafranska"> -->HS</div>
+      <div class="org-list">
+        <div class="org">
+          <div class="portrait">HS</div>
           <div class="name-block">
             <h4>Hanna Szafranska</h4>
             <p class="affil">MRC Laboratory of Molecular Biology<br/>University of Cambridge · PhD candidate</p>
           </div>
           <p class="bio">
-            As an early-career researcher, Hanna lives the day-to-day reality of data bottlenecks, omics pipelines, and reproducibility concerns — and the difficulty of integrating agentic AI into them.
-            <!-- PLACEHOLDER: insert online course name & society events -->
+            A PhD candidate at the MRC Laboratory of Molecular Biology and the University of Cambridge, Hanna's research focuses on multi-modality integration and cross-species omics studies of developmental tempo within early cortex development and evolution, advised by Prof. Madeline Lancaster and Prof. Richard Durbin. As an early-stage researcher, she faces first-hand the data bottlenecks, omics pipelines, and reproducibility concerns that make agentic AI both appealing and risky, and has a track record in community building.
           </p>
         </div>
 
-      <div class="org">
-          <div class="portrait"><!-- <img src="img/noura-ezaz-nikpay.jpg" alt="Noura Ezaz-Nikpay"> -->NE</div>
+        <div class="org">
+          <div class="portrait">NE</div>
           <div class="name-block">
             <h4>Noura Ezaz-Nikpay</h4>
             <p class="affil">Department of Computing<br/>Imperial College London · PhD candidate</p>
           </div>
           <p class="bio">
-            Noura is the student representative for the AI4Healthcare Centre at Imperial.
+            A PhD student in AI and ML at Imperial College London, Noura is the student representative for the AI4Health Centre, advised by Profs. Dario Farina and Stefanos Zafeiriou. With an MSci in Systems Biology, she has previously worked with Prof. Magnus Boman at Karolinska Institute on transcriptomic analysis for pancreatic cancer, with her current research focusing on synthetic data generation.
           </p>
         </div>
 
-      <div class="org-list">
         <div class="org">
-          <div class="portrait"><!-- <img src="img/kexin-huang.jpg" alt="Kexin Huang"> -->KH</div>
+          <div class="portrait">AR</div>
+          <div class="name-block">
+            <h4>Aviv Regev</h4>
+            <p class="affil">Executive VP, Genentech R&amp;ED<br/>Core Member, Broad Institute · MIT</p>
+          </div>
+          <p class="bio">
+            A pioneer of single-cell genomics and computational and systems biology of gene regulatory circuits, Aviv co-founded and leads the Human Cell Atlas together with Sara Teichmann. Her lab pioneered many of the key experimental and computational advances for single-cell and spatial genomics, especially single-cell RNA sequencing. She is also Executive Vice President and Head of Genentech Research and Early Development, a core member at the Broad Institute, and a professor in the Department of Biology at MIT.
+          </p>
+        </div>
+
+        <div class="org">
+          <div class="portrait">KH</div>
           <div class="name-block">
             <h4>Kexin Huang</h4>
             <p class="affil">Stanford AI Lab<br/>CEO &amp; Co-founder, Phylo</p>
           </div>
           <p class="bio">
-            Phylo’s Biomni Lab is an integrated environment for AI-native biology, allowing scientists to collaborate with AI agents to enhance scientific discovery. Kexin is a pioneer in developing foundation models for therapeutics, and his work bridges the gap between high-level machine learning research and practical drug discovery. With a professional footprint spanning Genentech, GSK, Pfizer, and IQVIA, he brings a unique "bench-to-browser" perspective, ensuring the workshop addresses the technical feasibility and industrial scalability of AI agents in the omics space.
-            </p>
+            A PhD student at Stanford Computer Science advised by Prof. Jure Leskovec, Kexin works on core AI challenges in biomedical problems across the therapeutics discovery pipeline — multi-modal modeling, agentic reasoning, and uncertainty quantification. His research is supported by the Stanford Bio-X fellowship, with experience at Genentech, GSK, Pfizer, and IQVIA. As CEO of Phylo, an integrated environment for AI-native biology, he brings a bench-to-browser perspective on the industrial scalability of AI agents in omics.
+          </p>
         </div>
 
         <div class="org">
-          <div class="portrait"><!-- <img src="img/izzy-barrass.jpg" alt="Izzy Barrass"> -->IB</div>
+          <div class="portrait">IB</div>
           <div class="name-block">
             <h4>Izzy Barrass</h4>
             <p class="affil">Founder &amp; CEO, Aethra Labs<br/>Centre for AI Safety</p>
           </div>
           <p class="bio">
-            Aethra Labs commercialises research that improves the usefulness and security of AI agents, providing expertise in the critical role of trustworthy and verifiable agentic behavior. Given that omics data often involves sensitive patient information and strict data protection considerations, Izzy’s experience in AI safety compliments this workshop’s goal to evaluate the risks of autonomous tool use. Drawing on her experience organizing the NeurIPS 2024 workshop “Towards Safe and Trustworthy Agents,” she provides the expertise on the governance framework necessary to ensure that "co-scientists" operate within ethical and secure boundaries.
-            </p>
+            Izzy holds a masters from the University of Oxford and founded Aethra Labs, which commercialises research to improve the usefulness and security of AI agents. She organised the NeurIPS 2024 workshop <em>Towards Safe and Trustworthy Agents</em>, and her expertise in AI safety complements the workshop's focus on trustworthy agentic behaviour in sensitive biomedical contexts.
+          </p>
         </div>
-
       </div>
     </div>
   </section>
@@ -1192,7 +1160,6 @@
           Get submission reminders, schedule updates, and the workshop whitepaper once it lands. All accepted authors are added automatically.
         </p>
       </div>
-      <!-- PLACEHOLDER: replace action with your form provider -->
       <form class="signup-form" action="#" method="post" onsubmit="event.preventDefault(); alert('Connect this form to your mailing list provider.');">
         <input type="email" name="email" placeholder="your.email@institution.edu" required aria-label="Email" />
         <button type="submit">Subscribe</button>
@@ -1205,7 +1172,6 @@
       <span>© 2026 · Copilots → Co-scientists in Omics · NeurIPS 2026 Workshop</span>
       <span>
         Contact: <a href="mailto:n.ezaz-nikpay24@imperial.ac.uk">n.ezaz-nikpay24@imperial.ac.uk</a>
-        <!-- PLACEHOLDER: set up a workshop-specific email -->
       </span>
     </div>
   </footer>
