@@ -649,8 +649,39 @@
         </p>
       </div>
 
-      <div class="hero-art reveal" aria-hidden="true" style="aspect-ratio:1/1;">
-        <canvas id="heroCanvas" width="520" height="520" style="width:100%;height:100%;display:block;"></canvas>
+      <div class="hero-art reveal" aria-hidden="true" style="aspect-ratio:1/1;position:relative;">
+        <!-- Background dot grid -->
+        <svg viewBox="0 0 520 520" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;">
+          <defs>
+            <radialGradient id="dgf" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#fff" stop-opacity="1"/>
+              <stop offset="52%" stop-color="#fff" stop-opacity="0.85"/>
+              <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+            </radialGradient>
+            <mask id="dgm"><rect width="520" height="520" fill="url(#dgf)"/></mask>
+          </defs>
+          <g mask="url(#dgm)" fill="#14110d" opacity="0.25">
+            <circle cx="48" cy="48" r="1.5"/><circle cx="84" cy="48" r="1.5"/><circle cx="120" cy="48" r="1.5"/><circle cx="156" cy="48" r="1.5"/><circle cx="192" cy="48" r="1.5"/><circle cx="228" cy="48" r="1.5"/><circle cx="264" cy="48" r="1.5"/><circle cx="300" cy="48" r="1.5"/><circle cx="336" cy="48" r="1.5"/><circle cx="372" cy="48" r="1.5"/><circle cx="408" cy="48" r="1.5"/><circle cx="444" cy="48" r="1.5"/><circle cx="480" cy="48" r="1.5"/>
+            <circle cx="48" cy="84" r="1.5"/><circle cx="84" cy="84" r="1.5"/><circle cx="120" cy="84" r="1.5"/><circle cx="156" cy="84" r="1.5"/><circle cx="192" cy="84" r="1.5"/><circle cx="228" cy="84" r="1.5"/><circle cx="264" cy="84" r="1.5"/><circle cx="300" cy="84" r="1.5"/><circle cx="336" cy="84" r="1.5"/><circle cx="372" cy="84" r="1.5"/><circle cx="408" cy="84" r="1.5"/><circle cx="444" cy="84" r="1.5"/><circle cx="480" cy="84" r="1.5"/>
+            <circle cx="48" cy="120" r="1.5"/><circle cx="84" cy="120" r="1.5"/><circle cx="120" cy="120" r="1.5"/><circle cx="156" cy="120" r="1.5"/><circle cx="192" cy="120" r="1.5"/><circle cx="228" cy="120" r="1.5"/><circle cx="264" cy="120" r="1.5"/><circle cx="300" cy="120" r="1.5"/><circle cx="336" cy="120" r="1.5"/><circle cx="372" cy="120" r="1.5"/><circle cx="408" cy="120" r="1.5"/><circle cx="444" cy="120" r="1.5"/><circle cx="480" cy="120" r="1.5"/>
+            <circle cx="48" cy="156" r="1.5"/><circle cx="84" cy="156" r="1.5"/><circle cx="120" cy="156" r="1.5"/><circle cx="156" cy="156" r="1.5"/><circle cx="192" cy="156" r="1.5"/><circle cx="228" cy="156" r="1.5"/><circle cx="264" cy="156" r="1.5"/><circle cx="300" cy="156" r="1.5"/><circle cx="336" cy="156" r="1.5"/><circle cx="372" cy="156" r="1.5"/><circle cx="408" cy="156" r="1.5"/><circle cx="444" cy="156" r="1.5"/><circle cx="480" cy="156" r="1.5"/>
+            <circle cx="48" cy="192" r="1.5"/><circle cx="84" cy="192" r="1.5"/><circle cx="120" cy="192" r="1.5"/><circle cx="156" cy="192" r="1.5"/><circle cx="192" cy="192" r="1.5"/><circle cx="228" cy="192" r="1.5"/><circle cx="264" cy="192" r="1.5"/><circle cx="300" cy="192" r="1.5"/><circle cx="336" cy="192" r="1.5"/><circle cx="372" cy="192" r="1.5"/><circle cx="408" cy="192" r="1.5"/><circle cx="444" cy="192" r="1.5"/><circle cx="480" cy="192" r="1.5"/>
+            <circle cx="48" cy="228" r="1.5"/><circle cx="84" cy="228" r="1.5"/><circle cx="120" cy="228" r="1.5"/><circle cx="156" cy="228" r="1.5"/><circle cx="192" cy="228" r="1.5"/><circle cx="228" cy="228" r="1.5"/><circle cx="264" cy="228" r="1.5"/><circle cx="300" cy="228" r="1.5"/><circle cx="336" cy="228" r="1.5"/><circle cx="372" cy="228" r="1.5"/><circle cx="408" cy="228" r="1.5"/><circle cx="444" cy="228" r="1.5"/><circle cx="480" cy="228" r="1.5"/>
+            <circle cx="48" cy="264" r="1.5"/><circle cx="84" cy="264" r="1.5"/><circle cx="120" cy="264" r="1.5"/><circle cx="156" cy="264" r="1.5"/><circle cx="192" cy="264" r="1.5"/><circle cx="228" cy="264" r="1.5"/><circle cx="264" cy="264" r="1.5"/><circle cx="300" cy="264" r="1.5"/><circle cx="336" cy="264" r="1.5"/><circle cx="372" cy="264" r="1.5"/><circle cx="408" cy="264" r="1.5"/><circle cx="444" cy="264" r="1.5"/><circle cx="480" cy="264" r="1.5"/>
+            <circle cx="48" cy="300" r="1.5"/><circle cx="84" cy="300" r="1.5"/><circle cx="120" cy="300" r="1.5"/><circle cx="156" cy="300" r="1.5"/><circle cx="192" cy="300" r="1.5"/><circle cx="228" cy="300" r="1.5"/><circle cx="264" cy="300" r="1.5"/><circle cx="300" cy="300" r="1.5"/><circle cx="336" cy="300" r="1.5"/><circle cx="372" cy="300" r="1.5"/><circle cx="408" cy="300" r="1.5"/><circle cx="444" cy="300" r="1.5"/><circle cx="480" cy="300" r="1.5"/>
+            <circle cx="48" cy="336" r="1.5"/><circle cx="84" cy="336" r="1.5"/><circle cx="120" cy="336" r="1.5"/><circle cx="156" cy="336" r="1.5"/><circle cx="192" cy="336" r="1.5"/><circle cx="228" cy="336" r="1.5"/><circle cx="264" cy="336" r="1.5"/><circle cx="300" cy="336" r="1.5"/><circle cx="336" cy="336" r="1.5"/><circle cx="372" cy="336" r="1.5"/><circle cx="408" cy="336" r="1.5"/><circle cx="444" cy="336" r="1.5"/><circle cx="480" cy="336" r="1.5"/>
+            <circle cx="48" cy="372" r="1.5"/><circle cx="84" cy="372" r="1.5"/><circle cx="120" cy="372" r="1.5"/><circle cx="156" cy="372" r="1.5"/><circle cx="192" cy="372" r="1.5"/><circle cx="228" cy="372" r="1.5"/><circle cx="264" cy="372" r="1.5"/><circle cx="300" cy="372" r="1.5"/><circle cx="336" cy="372" r="1.5"/><circle cx="372" cy="372" r="1.5"/><circle cx="408" cy="372" r="1.5"/><circle cx="444" cy="372" r="1.5"/><circle cx="480" cy="372" r="1.5"/>
+            <circle cx="48" cy="408" r="1.5"/><circle cx="84" cy="408" r="1.5"/><circle cx="120" cy="408" r="1.5"/><circle cx="156" cy="408" r="1.5"/><circle cx="192" cy="408" r="1.5"/><circle cx="228" cy="408" r="1.5"/><circle cx="264" cy="408" r="1.5"/><circle cx="300" cy="408" r="1.5"/><circle cx="336" cy="408" r="1.5"/><circle cx="372" cy="408" r="1.5"/><circle cx="408" cy="408" r="1.5"/><circle cx="444" cy="408" r="1.5"/><circle cx="480" cy="408" r="1.5"/>
+            <circle cx="48" cy="444" r="1.5"/><circle cx="84" cy="444" r="1.5"/><circle cx="120" cy="444" r="1.5"/><circle cx="156" cy="444" r="1.5"/><circle cx="192" cy="444" r="1.5"/><circle cx="228" cy="444" r="1.5"/><circle cx="264" cy="444" r="1.5"/><circle cx="300" cy="444" r="1.5"/><circle cx="336" cy="444" r="1.5"/><circle cx="372" cy="444" r="1.5"/><circle cx="408" cy="444" r="1.5"/><circle cx="444" cy="444" r="1.5"/><circle cx="480" cy="444" r="1.5"/>
+            <circle cx="48" cy="480" r="1.5"/><circle cx="84" cy="480" r="1.5"/><circle cx="120" cy="480" r="1.5"/><circle cx="156" cy="480" r="1.5"/><circle cx="192" cy="480" r="1.5"/><circle cx="228" cy="480" r="1.5"/><circle cx="264" cy="480" r="1.5"/><circle cx="300" cy="480" r="1.5"/><circle cx="336" cy="480" r="1.5"/><circle cx="372" cy="480" r="1.5"/><circle cx="408" cy="480" r="1.5"/><circle cx="444" cy="480" r="1.5"/><circle cx="480" cy="480" r="1.5"/>
+          </g>
+          <!-- Static grey dashed orbital rings -->
+          <circle cx="260" cy="260" r="80"  fill="none" stroke="#b0a898" stroke-width="0.8" stroke-dasharray="3 5"/>
+          <circle cx="260" cy="260" r="150" fill="none" stroke="#b0a898" stroke-width="0.8" stroke-dasharray="3 5"/>
+          <circle cx="260" cy="260" r="210" fill="none" stroke="#b0a898" stroke-width="0.8" stroke-dasharray="3 5"/>
+        </svg>
+        <!-- Animation canvas on top, transparent background -->
+        <canvas id="heroCanvas" style="position:absolute;inset:0;width:100%;height:100%;display:block;"></canvas>
         <div class="label">Fig. 01 — Emergent integration</div>
       </div>
 
@@ -1258,8 +1289,13 @@
   (function() {
     const canvas = document.getElementById('heroCanvas');
     if (!canvas) return;
+    const dpr = window.devicePixelRatio || 1;
+    const SIZE = 520;
+    canvas.width = SIZE * dpr;
+    canvas.height = SIZE * dpr;
     const ctx = canvas.getContext('2d');
-    const W = 520, H = 520, cx = 260, cy = 260;
+    ctx.scale(dpr, dpr);
+    const W = SIZE, H = SIZE, cx = 260, cy = 260;
     const TOTAL = 12, CHAOS_END = 3.5, TRANS_END = 6;
     let start = null;
     const rng = (a, b) => a + Math.random() * (b - a);
@@ -1271,7 +1307,7 @@
       while (b===a) b = Math.floor(Math.random()*36);
       chaosEdges.push([a,b]);
     }
-    const rings = [{ r:82, tilt:0.20, n:8 }, { r:152, tilt:0.30, n:12 }, { r:212, tilt:0.40, n:16 }];
+    const rings = [{ r:80, tilt:0, n:8 }, { r:150, tilt:0, n:12 }, { r:210, tilt:0, n:16 }];
     const layerColors = ['#b8431f','#b85020','#a06828'];
     const layerOpacity = [0.95, 0.78, 0.60];
     function getOrderNodes(spin) {
@@ -1315,9 +1351,7 @@
       if(!start) start=ts;
       const t = ((ts-start)/1000) % TOTAL;
       ctx.clearRect(0,0,W,H);
-      ctx.fillStyle='#14110d'; ctx.globalAlpha=0.22;
-      for(let row=48;row<=W-48;row+=36) for(let col=48;col<=H-48;col+=36) { ctx.beginPath(); ctx.arc(col,row,1.4,0,Math.PI*2); ctx.fill(); }
-      ctx.globalAlpha=1;
+      // transparent background — site's dot grid shows through
       if (t < CHAOS_END) {
         const fade = Math.min(t/0.6, 1);
         chaosEdges.forEach(([a,b]) => { ctx.save(); ctx.globalAlpha=0.18*fade; ctx.strokeStyle='#b8431f'; ctx.lineWidth=0.8; ctx.beginPath(); ctx.moveTo(chaosNodes[a].x,chaosNodes[a].y); ctx.lineTo(chaosNodes[b].x,chaosNodes[b].y); ctx.stroke(); ctx.restore(); });
@@ -1329,12 +1363,12 @@
         const morphed = chaosNodes.map((cn,i) => { const on=orderNodes[i%orderNodes.length]; return {x:lerp(cn.x,on.x,p),y:lerp(cn.y,on.y,p),z:on.z*p,layer:on.layer,r:lerp(cn.r,on.r,p)}; });
         if (p < 0.6) chaosEdges.slice(0,50).forEach(([a,b]) => { ctx.save(); ctx.globalAlpha=0.18*(1-p/0.6); ctx.strokeStyle='#b8431f'; ctx.lineWidth=0.7; ctx.beginPath(); ctx.moveTo(morphed[a].x,morphed[a].y); ctx.lineTo(morphed[b].x,morphed[b].y); ctx.stroke(); ctx.restore(); });
         orderEdges.forEach(([a,b]) => { if(a>=orderNodes.length||b>=orderNodes.length) return; dashedArc(orderNodes[a].x,orderNodes[a].y,orderNodes[b].x,orderNodes[b].y,0.55*p,1,-spin*50); });
-        rings.forEach(ring => { ctx.save(); ctx.globalAlpha=0.4*p; ctx.strokeStyle='#b0a898'; ctx.lineWidth=0.8; ctx.setLineDash([3,5]); ctx.beginPath(); ctx.ellipse(cx,cy,ring.r,ring.r*Math.cos(ring.tilt),0,0,Math.PI*2); ctx.stroke(); ctx.setLineDash([]); ctx.restore(); });
+        rings.forEach(ring => { ctx.save(); ctx.globalAlpha=0.4*p; ctx.strokeStyle='#b0a898'; ctx.lineWidth=0.8; ctx.setLineDash([3,5]); ctx.beginPath(); ctx.arc(cx,cy,ring.r,0,Math.PI*2); ctx.stroke(); ctx.setLineDash([]); ctx.restore(); });
         morphed.forEach(n => { ctx.save(); ctx.globalAlpha=0.82; ctx.fillStyle=layerColors[n.layer]||'#b8431f'; ctx.beginPath(); ctx.arc(n.x,n.y,n.r,0,Math.PI*2); ctx.fill(); ctx.restore(); });
       } else {
         const lt=t-TRANS_END, spin=0.8+lt*0.28, dashOff=-lt*28;
         const orderNodes=getOrderNodes(spin), orderEdges=getOrderEdges(orderNodes);
-        rings.forEach(ring => { ctx.save(); ctx.globalAlpha=0.38; ctx.strokeStyle='#b0a898'; ctx.lineWidth=0.8; ctx.setLineDash([3,5]); ctx.beginPath(); ctx.ellipse(cx,cy,ring.r,ring.r*Math.cos(ring.tilt),0,0,Math.PI*2); ctx.stroke(); ctx.setLineDash([]); ctx.restore(); });
+        // rings drawn by background SVG
         orderEdges.map(([a,b]) => a<orderNodes.length&&b<orderNodes.length ? {a,b,z:(orderNodes[a].z+orderNodes[b].z)/2} : null).filter(Boolean).sort((a,b)=>a.z-b.z).forEach(({a,b,z}) => { const da=Math.min(0.28+0.55*((z+120)/240),0.85); dashedArc(orderNodes[a].x,orderNodes[a].y,orderNodes[b].x,orderNodes[b].y,da,1,dashOff); });
         [...orderNodes].sort((a,b)=>a.z-b.z).forEach(n => { const ds=0.6+0.8*((n.z+120)/240); ctx.save(); ctx.globalAlpha=Math.min(layerOpacity[n.layer]*ds,1); ctx.fillStyle=layerColors[n.layer]; ctx.beginPath(); ctx.arc(n.x,n.y,n.r*Math.max(ds,0.5),0,Math.PI*2); ctx.fill(); ctx.restore(); });
         const g=ctx.createRadialGradient(cx,cy,0,cx,cy,54); g.addColorStop(0,'rgba(184,67,31,0.45)'); g.addColorStop(1,'rgba(184,67,31,0)');
@@ -1342,11 +1376,11 @@
         ctx.beginPath(); ctx.arc(cx,cy,24,0,Math.PI*2); ctx.fillStyle='#f4efe6'; ctx.strokeStyle='#b8431f'; ctx.lineWidth=1; ctx.fill(); ctx.stroke();
         ctx.beginPath(); ctx.arc(cx,cy,5,0,Math.PI*2); ctx.fillStyle='#b8431f'; ctx.fill();
         ctx.fillStyle='#877e6f'; ctx.font='10px monospace'; ctx.textAlign='center'; ctx.globalAlpha=0.85;
-        ctx.fillText('GENOMICS', 260, 200);
-        ctx.fillText('TRANSCRIPTOMICS', 260, 172);
-        ctx.fillText('PROTEOMICS', 260, 144);
+        ctx.fillText('GENOMICS', 260, cy - rings[0].r - 6);
+        ctx.fillText('TRANSCRIPTOMICS', 260, cy - rings[1].r - 6);
+        ctx.fillText('PROTEOMICS', 260, cy - rings[2].r - 6);
         ctx.fillStyle='#b8431f'; ctx.font='italic 13px Georgia,serif';
-        ctx.fillText('co-scientist', 260, 294);
+        ctx.fillText('co-scientist', 260, 316);
       }
       requestAnimationFrame(frame);
     }
