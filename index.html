@@ -366,7 +366,7 @@
       border-bottom: 1px solid var(--line);
     }
     @media (min-width: 700px) {
-      .dates-grid { grid-template-columns: repeat(3, 1fr); }
+      .dates-grid { grid-template-columns: repeat(4, 1fr); }
     }
     .date-row {
       display: flex;
@@ -379,14 +379,14 @@
     .date-row:last-child { border-bottom: none; }
     @media (min-width: 700px) {
       .date-row {
-        padding: 3.5rem 3.5rem 3.5rem 0;
+        padding: 3.5rem 3rem 3.5rem 0;
         border-bottom: none;
         border-right: 1px solid var(--line);
         min-height: 220px;
         justify-content: center;
       }
       .date-row:last-child { border-right: none; padding-right: 0; }
-      .date-row:not(:first-child) { padding-left: 3.5rem; }
+      .date-row:not(:first-child) { padding-left: 3rem; }
     }
     .date-row .marker {
       width: 24px;
@@ -405,7 +405,7 @@
     }
     .date-row .when {
       font-family: var(--serif);
-      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
       letter-spacing: -0.03em;
       line-height: 1;
       color: var(--ink);
@@ -547,6 +547,36 @@
     .cfp-card li:first-child { border-top: none; }
     .cfp-card li strong { color: var(--ink); display: block; font-weight: 500; margin-bottom: 0.15rem; }
 
+    /* Sponsor logos */
+    .logos-section {
+      padding: clamp(3rem, 6vw, 5rem) 0;
+      border-top: 1px solid var(--line);
+    }
+    .logos-label {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .logos-grid {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem 3rem;
+    }
+    .logos-grid img {
+      height: 36px;
+      width: auto;
+      object-fit: contain;
+      filter: grayscale(1) opacity(0.6);
+      transition: filter 0.2s;
+    }
+    .logos-grid img:hover { filter: grayscale(0) opacity(1); }
+
     .signup {
       padding: clamp(4rem, 7vw, 6rem) 0;
       background: var(--ink);
@@ -650,7 +680,6 @@
       </div>
 
       <div class="hero-art reveal" aria-hidden="true" style="aspect-ratio:1/1;position:relative;">
-        <!-- Background dot grid -->
         <svg viewBox="0 0 520 520" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%;">
           <defs>
             <radialGradient id="dgf" cx="50%" cy="50%" r="50%">
@@ -675,12 +704,10 @@
             <circle cx="48" cy="444" r="1.5"/><circle cx="84" cy="444" r="1.5"/><circle cx="120" cy="444" r="1.5"/><circle cx="156" cy="444" r="1.5"/><circle cx="192" cy="444" r="1.5"/><circle cx="228" cy="444" r="1.5"/><circle cx="264" cy="444" r="1.5"/><circle cx="300" cy="444" r="1.5"/><circle cx="336" cy="444" r="1.5"/><circle cx="372" cy="444" r="1.5"/><circle cx="408" cy="444" r="1.5"/><circle cx="444" cy="444" r="1.5"/><circle cx="480" cy="444" r="1.5"/>
             <circle cx="48" cy="480" r="1.5"/><circle cx="84" cy="480" r="1.5"/><circle cx="120" cy="480" r="1.5"/><circle cx="156" cy="480" r="1.5"/><circle cx="192" cy="480" r="1.5"/><circle cx="228" cy="480" r="1.5"/><circle cx="264" cy="480" r="1.5"/><circle cx="300" cy="480" r="1.5"/><circle cx="336" cy="480" r="1.5"/><circle cx="372" cy="480" r="1.5"/><circle cx="408" cy="480" r="1.5"/><circle cx="444" cy="480" r="1.5"/><circle cx="480" cy="480" r="1.5"/>
           </g>
-          <!-- Static grey dashed orbital rings -->
           <circle cx="260" cy="260" r="80"  fill="none" stroke="#b0a898" stroke-width="0.8" stroke-dasharray="3 5"/>
           <circle cx="260" cy="260" r="150" fill="none" stroke="#b0a898" stroke-width="0.8" stroke-dasharray="3 5"/>
           <circle cx="260" cy="260" r="210" fill="none" stroke="#b0a898" stroke-width="0.8" stroke-dasharray="3 5"/>
         </svg>
-        <!-- Animation canvas on top, transparent background -->
         <canvas id="heroCanvas" style="position:absolute;inset:0;width:100%;height:100%;display:block;"></canvas>
         <div class="label">Fig. 01 — Emergent integration</div>
       </div>
@@ -705,6 +732,36 @@
       </div>
     </div>
   </header>
+
+  <!-- =============== LOGOS =============== -->
+  <div class="logos-section">
+    <div class="container">
+      <p class="logos-label">Affiliated institutions &amp; partners</p>
+      <div class="logos-grid">
+        <img src="logos/cambridge.png" alt="University of Cambridge" title="University of Cambridge" />
+        <img src="logos/mrclmb.png" alt="MRC Laboratory of Molecular Sciences" title="MRC LMB" />
+        <img src="logos/stanford.png" alt="Stanford University" title="Stanford University" />
+        <img src="logos/stanfordai.png" alt="Stanford AI Lab" title="Stanford AI Lab" />
+        <img src="logos/imperial.png" alt="Imperial College London" title="Imperial College London" />
+        <img src="logos/genentech.png" alt="Genentech" title="Genentech" />
+        <img src="logos/briad.png" alt="Broad Institute" title="Broad Institute" />
+        <img src="logos/deepmind.png" alt="Google DeepMind" title="Google DeepMind" />
+        <img src="logos/garvan.png" alt="Garvan Institute" title="Garvan Institute" />
+        <img src="logos/cmri.png" alt="CMRI" title="Children's Medical Research Institute" />
+        <img src="logos/roche.png" alt="Roche" title="Roche" />
+        <img src="logos/KI.png" alt="Karolinska Institutet" title="Karolinska Institutet" />
+        <img src="logos/usyd.png" alt="University of Sydney" title="University of Sydney" />
+        <img src="logos/qut.png" alt="QUT" title="Queensland University of Technology" />
+        <img src="logos/gia.png" alt="Genome Institute of Singapore" title="Genome Institute of Singapore" />
+        <img src="logos/phylo.png" alt="Phylo" title="Phylo" />
+        <img src="logos/edison.png" alt="Edison Scientific" title="Edison Scientific" />
+        <img src="logos/seqera.png" alt="Seqera" title="Seqera" />
+        <img src="logos/centerAisafety.png" alt="Center for AI Safety" title="Center for AI Safety" />
+        <img src="logos/scint.png" alt="Stem Cell Institute" title="Cambridge Stem Cell Institute" />
+        <img src="logos/helmholtz.png" alt="Helmholtz Munich" title="Helmholtz Munich" />
+      </div>
+    </div>
+  </div>
 
   <!-- =============== 01 / SCHEDULE =============== -->
   <section id="schedule">
@@ -756,7 +813,7 @@
         <div class="slot">
           <div class="time">11:00 – 11:20</div>
           <div class="what">
-            <h4>Invited Talk: "Learnings from Roche's adoption of AI in Omics R&amp;D"</h4>
+            <h4>Invited Talk: "Learnings from Roche's adoption of agentic AI in Omics R&amp;D"</h4>
             <p class="desc">Ercan Suekuer, Head of AI Incubator, Roche.</p>
           </div>
         </div>
@@ -793,7 +850,7 @@
         </div>
 
         <div class="slot">
-          <div class="time">14:30 – 16:00</div>
+          <div class="time">14:30 – 15:45</div>
           <div class="what">
             <h4>Spotlight Talks</h4>
             <p class="desc">Selected contributed papers presented as short talks.</p>
@@ -801,12 +858,12 @@
         </div>
 
         <div class="slot break">
-          <div class="time">16:05 – 16:55</div>
+          <div class="time">15:50 – 16:30</div>
           <div class="what"><h4>Poster Session 2 &amp; Coffee Break</h4></div>
         </div>
 
         <div class="slot keynote">
-          <div class="time">17:00 – 18:00</div>
+          <div class="time">16:35 – 17:35</div>
           <div class="what">
             <h4>Keynote Conversation: Fabian Theis &amp; Sara Teichmann of the Human Cell Atlas</h4>
             <p class="desc">As key researchers behind The Human Cell Atlas, Fabian and Sara have driven the transition from traditional biology to precision medicine. This conversation centres their perspectives on tech adoption in omics over the course of their careers, and how this shapes their current engagement with agentic AI. With Sara's background in genomics and Fabian's in AI, together they span the full data-to-discovery pipeline.</p>
@@ -814,9 +871,9 @@
         </div>
 
         <div class="slot">
-          <div class="time">18:00 – 18:10</div>
+          <div class="time">17:40 – 18:00</div>
           <div class="what">
-            <h4>Closing Remarks &amp; Next Steps for the Community</h4>
+            <h4>Closing Remarks, Prize Announcement &amp; Next Steps for the Community</h4>
           </div>
         </div>
       </div>
@@ -899,6 +956,12 @@
       </div>
 
       <div class="dates-grid">
+        <div class="date-row">
+          <div class="marker"></div>
+          <small>Call for papers</small>
+          <div class="when">Jul 12</div>
+          <div class="label">2026 · Submission portal opens.</div>
+        </div>
         <div class="date-row">
           <div class="marker"></div>
           <small>Submission deadline</small>
@@ -1042,7 +1105,7 @@
           <ul>
             <li>
               <strong>Format</strong>
-              Short papers (&lt; 5 pages) and long papers (&lt; 10 pages)
+              Short papers (up to 4 pages) and long papers (up to 9 pages), excluding references and supplementary material.
             </li>
             <li>
               <strong>Anonymisation</strong>
@@ -1051,6 +1114,10 @@
             <li>
               <strong>Dual submission</strong>
               Work presented at the NeurIPS main conference cannot also appear here.
+            </li>
+            <li>
+              <strong>Best paper award</strong>
+              A prize of 2,000 token credits, sponsored by Edison Scientific, will be awarded to the best paper.
             </li>
             <li>
               <strong>Submission portal</strong>
@@ -1081,7 +1148,7 @@
             <p class="affil">MRC Laboratory of Molecular Biology<br/>University of Cambridge · PhD candidate</p>
           </div>
           <p class="bio">
-            A PhD candidate at the MRC Laboratory of Molecular Biology and the University of Cambridge, Hanna's research focuses on multi-modality integration and cross-species omics studies of developmental tempo within early cortex development and evolution, advised by Prof. Madeline Lancaster and Prof. Richard Durbin. As an early-stage researcher, she faces first-hand the data bottlenecks, omics pipelines, and reproducibility concerns that make agentic AI both appealing and risky, and has a track record in community building.
+            A PhD candidate at the MRC Laboratory of Molecular Biology and the University of Cambridge, Hanna's research focuses on multi-modality integration and cross-species omics studies of developmental tempo within early cortex development and evolution, advised by Prof. Madeline Lancaster and Prof. Richard Durbin. As an early-stage researcher, she faces first-hand the data bottlenecks, omics pipelines, and reproducibility concerns that make agentic AI both appealing and risky. She has a track record in international community building, having organised the Alternative Protein Fundamentals Programme, an 8-week international course culminating in a careers fair connecting early-career researchers with emerging companies in the field.
           </p>
         </div>
 
@@ -1125,7 +1192,7 @@
             <p class="affil">Founder &amp; CEO, Aethra Labs<br/>Centre for AI Safety</p>
           </div>
           <p class="bio">
-            Izzy holds a masters from the University of Oxford and founded Aethra Labs, which commercialises research to improve the usefulness and security of AI agents. She organised the NeurIPS 2024 workshop <em>Towards Safe and Trustworthy Agents</em>, and her expertise in AI safety complements the workshop's focus on trustworthy agentic behaviour in sensitive biomedical contexts.
+            Izzy holds a masters from the University of Oxford and founded Aethra Labs, which commercialises research to improve the usefulness and security of AI agents. She organised the NeurIPS 2024 workshop <em>Towards Safe and Trustworthy Agents</em>, bringing experience in successfully running a first-time NeurIPS workshop. Her expertise in AI safety complements the workshop's focus on trustworthy agentic behaviour in sensitive biomedical contexts.
           </p>
         </div>
       </div>
@@ -1363,7 +1430,6 @@
       if(!start) start=ts;
       const t = ((ts-start)/1000) % TOTAL;
       ctx.clearRect(0,0,W,H);
-      // transparent background — site's dot grid shows through
       if (t < CHAOS_END) {
         const fade = Math.min(t/0.6, 1);
         chaosEdges.forEach(([a,b]) => { ctx.save(); ctx.globalAlpha=0.18*fade; ctx.strokeStyle='#b8431f'; ctx.lineWidth=0.8; ctx.beginPath(); ctx.moveTo(chaosNodes[a].x,chaosNodes[a].y); ctx.lineTo(chaosNodes[b].x,chaosNodes[b].y); ctx.stroke(); ctx.restore(); });
@@ -1380,7 +1446,6 @@
       } else {
         const lt=t-TRANS_END, spin=0.8+lt*0.28, dashOff=-lt*28;
         const orderNodes=getOrderNodes(spin), orderEdges=getOrderEdges(orderNodes);
-        // rings drawn by background SVG
         orderEdges.map(([a,b]) => a<orderNodes.length&&b<orderNodes.length ? {a,b,z:(orderNodes[a].z+orderNodes[b].z)/2} : null).filter(Boolean).sort((a,b)=>a.z-b.z).forEach(({a,b,z}) => { const da=Math.min(0.28+0.55*((z+120)/240),0.85); dashedArc(orderNodes[a].x,orderNodes[a].y,orderNodes[b].x,orderNodes[b].y,da,1,dashOff); });
         [...orderNodes].sort((a,b)=>a.z-b.z).forEach(n => { const ds=0.6+0.8*((n.z+120)/240); ctx.save(); ctx.globalAlpha=Math.min(layerOpacity[n.layer]*ds,1); ctx.fillStyle=layerColors[n.layer]; ctx.beginPath(); ctx.arc(n.x,n.y,n.r*Math.max(ds,0.5),0,Math.PI*2); ctx.fill(); ctx.restore(); });
         const g=ctx.createRadialGradient(cx,cy,0,cx,cy,54); g.addColorStop(0,'rgba(184,67,31,0.45)'); g.addColorStop(1,'rgba(184,67,31,0)');
